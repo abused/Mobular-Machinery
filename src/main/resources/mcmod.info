@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "mobularmachinery",
+  "name": "Mobular Machinery",
+  "description": "A mod based around steampunk, mobs, machines, and more!",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["abused_master, EPIIC_THUNDERCAT"],
+  "credits": "The ModOff team",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
