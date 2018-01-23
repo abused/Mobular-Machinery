@@ -20,11 +20,13 @@ import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCore;
 public class ModResources {
 
     public static Item itemGear = new ItemBase("item_gear");
+    public static Item itemMechanizedEgg = new ItemBase("item_mechanized_egg");
     public static Block blockHydro = new HydroGen();
     public static Block blockPhotonCore = new PhotonCore();
     public static Block blockPhotonCell = new PhotonCell();
 
     public static void registerResources() {
+    	reg(itemMechanizedEgg);
         reg(itemGear);
         reg(blockHydro);
         reg(blockPhotonCore);
@@ -33,6 +35,7 @@ public class ModResources {
 
     public static void registerRenders() {
         regRender(itemGear);
+        regRender(itemMechanizedEgg);
         regRender(blockPhotonCore);
         regRender(blockPhotonCell);
     }
