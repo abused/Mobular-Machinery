@@ -11,14 +11,28 @@ import teamrapture.mobularmachinery.registry.ModResources;
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent e) {
+    	register(e);
         ModResources.registerResources();
     }
 
     public void init(FMLInitializationEvent e) {
+    	registerRenders(e);
         ModResources.registerTE();
         NetworkRegistry.INSTANCE.registerGuiHandler(MobularMachinery.instance, new GuiHandler());
     }
 
     public void postInit(FMLPostInitializationEvent e) {
     }
+    private void register(FMLPreInitializationEvent preEvent) {
+	
+
+	}
+    public void registerRenders(FMLInitializationEvent event) {
+
+	}
+
+	public void registerRender(FMLInitializationEvent event) {
+	}
+	public void registerEntities(FMLPreInitializationEvent preEvent) {
+		}
 }
