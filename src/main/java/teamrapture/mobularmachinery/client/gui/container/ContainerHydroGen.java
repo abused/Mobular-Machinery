@@ -1,11 +1,11 @@
-package teamrapture.mobularmachinery.gui.container;
+package teamrapture.mobularmachinery.client.gui.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import teamrapture.mobularmachinery.gui.slots.SlotInput;
+import teamrapture.mobularmachinery.client.gui.slots.SlotInput;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 
 public class ContainerHydroGen extends Container {

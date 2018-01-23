@@ -1,11 +1,11 @@
-package teamrapture.mobularmachinery.gui;
+package teamrapture.mobularmachinery.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import teamrapture.mobularmachinery.gui.container.ContainerHydroGen;
+import teamrapture.mobularmachinery.client.gui.container.ContainerHydroGen;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 
 import javax.annotation.Nullable;

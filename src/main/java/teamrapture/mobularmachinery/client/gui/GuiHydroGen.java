@@ -1,4 +1,4 @@
-package teamrapture.mobularmachinery.gui;
+package teamrapture.mobularmachinery.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import org.lwjgl.opengl.GL11;
 import teamrapture.mobularmachinery.Info;
-import teamrapture.mobularmachinery.gui.container.ContainerHydroGen;
+import teamrapture.mobularmachinery.client.gui.container.ContainerHydroGen;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 
 import java.util.ArrayList;

@@ -17,7 +17,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import teamrapture.mobularmachinery.MobularMachinery;
-import teamrapture.mobularmachinery.gui.GuiHandler;
+import teamrapture.mobularmachinery.client.gui.GuiHandler;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 import teamrapture.mobularmachinery.utils.FluidUtils;
 

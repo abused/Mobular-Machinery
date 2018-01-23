@@ -1,4 +1,4 @@
-package teamrapture.mobularmachinery.gui.slots;
+package teamrapture.mobularmachinery.client.gui.slots;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;

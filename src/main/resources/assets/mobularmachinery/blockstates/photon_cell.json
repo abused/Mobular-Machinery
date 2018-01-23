@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "mobularmachinery:photon_cell" },
+		"inventory": { "model": "mobularmachinery:photon_cell" }
+    }
+}

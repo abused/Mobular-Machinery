@@ -1,0 +1,23 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+		"particle": "mobularmachinery:blocks/photon_core",
+        "0": "mobularmachinery:blocks/photon_core"
+    },
+    "elements": [
+        {
+            "name": "Cube",
+            "from": [ 3.0, 6.0, 2.0 ], 
+            "to": [ 13.0, 16.0, 12.0 ], 
+            "rotation": { "origin": [ 5.0, 8.0, 5.0 ], "axis": "x", "angle": 45.0 },
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        }
+    ]
+}
