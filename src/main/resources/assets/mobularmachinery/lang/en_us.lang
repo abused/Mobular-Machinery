@@ -1,3 +1,5 @@
 itemGroup.MobularTab=Mobular Machinery
 
 item.item_gear.name=Gear
+
+tile.hydroelectric_generator.name=Hydroelectric Generator

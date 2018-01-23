@@ -9,11 +9,12 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import teamrapture.mobularmachinery.proxy.CommonProxy;
+import teamrapture.mobularmachinery.registry.ModResources;
 
 @Mod(modid = Info.MODID, name = Info.NAME, version = Info.VERSION, acceptedMinecraftVersions = Info.ACCEPTED_VERSIONS)
 public class MobularMachinery {
 
-    @Mod.Instance(Info.MODID)
+    @Mod.Instance
     public static MobularMachinery instance;
 
     @SidedProxy(clientSide = "teamrapture.mobularmachinery.proxy.ClientProxy", serverSide = "teamrapture.mobularmachinery.proxy.CommonProxy")
@@ -37,7 +38,7 @@ public class MobularMachinery {
     public static CreativeTabs mobularTab = new CreativeTabs("MobularTab") {
         @Override
         public ItemStack getTabIconItem() {
-            return new ItemStack(Items.SPAWN_EGG);
+            return new ItemStack(ModResources.itemGear);
         }
     };
 }

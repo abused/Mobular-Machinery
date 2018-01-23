@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "mobularmachinery:hydroelectric_generator" },
+		"inventory": { "model": "mobularmachinery:hydroelectric_generator" }
+    }
+}
