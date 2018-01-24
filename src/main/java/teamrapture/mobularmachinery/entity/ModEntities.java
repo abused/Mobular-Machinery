@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import teamrapture.mobularmachinery.Info;
 import teamrapture.mobularmachinery.MobularMachinery;
+import teamrapture.mobularmachinery.entity.boss.EntityMechOctopusBoss;
 import teamrapture.mobularmachinery.entity.friendly.EntityMechanicalChicken;
 
 public class ModEntities {
@@ -31,6 +32,14 @@ public class ModEntities {
 
 		// EntitySpawnPlacementRegistry.setPlacementType(EntityMechanicalCow.class,
 		// SpawnPlacementType.ON_GROUND);
+		
+		// OCTO Boss
+		EntityRegistry.registerModEntity(getEntityResource("MechanicalOctopus"), EntityMechOctopusBoss.class,
+				"MechanicalOctopus", 1, MobularMachinery.instance, 80, 3, false, 0xffffff, 0xd9d9d9);
+
+		EntityRegistry.addSpawn(EntityMechOctopusBoss.class, 2, 1, 1, EnumCreatureType.AMBIENT, Biomes.PLAINS);
+
+		EntitySpawnPlacementRegistry.setPlacementType(EntityMechOctopusBoss.class, SpawnPlacementType.ON_GROUND);
 
 	}
 

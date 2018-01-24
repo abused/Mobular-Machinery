@@ -9,8 +9,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import teamrapture.mobularmachinery.client.render.RenderMechOctopusBoss;
 import teamrapture.mobularmachinery.client.render.RenderMechanicalChicken;
-import teamrapture.mobularmachinery.entity.ModEntities;
+import teamrapture.mobularmachinery.entity.boss.EntityMechOctopusBoss;
 import teamrapture.mobularmachinery.entity.friendly.EntityMechanicalChicken;
 import teamrapture.mobularmachinery.registry.ModResources;
 
@@ -29,7 +30,12 @@ public class ClientProxy extends CommonProxy {
     public void init(FMLInitializationEvent e) {
         super.init(e);
         RenderManager rm = Minecraft.getMinecraft().getRenderManager();
-		rm.entityRenderMap.put(EntityMechanicalChicken.class, new RenderMechanicalChicken(rm));
+        rm.entityRenderMap.put(EntityMechanicalChicken.class, new RenderMechanicalChicken(rm));
+        rm.entityRenderMap.put(EntityMechOctopusBoss.class, new RenderMechOctopusBoss(rm));
+		
+		
+		
+		
     }
 
     @Override
