@@ -9,3 +9,9 @@ tile.photon_cell.name=Photon Cell
 tile.water_vaporizer.name=Water Vaporizer
 tile.regional_extruder.name=Regional Extruder Core
 tile.extruder_frame.name=Regional Extruder Frame
+tile.extruder_tap.name=Regional Extruder Tap
+
+entity.MechanicalChicken.name=Mechanical Chicken
+entity.MechanicalOctopus.name=Mechanical Octopus
+
+fluid.fluid_steam=Steam

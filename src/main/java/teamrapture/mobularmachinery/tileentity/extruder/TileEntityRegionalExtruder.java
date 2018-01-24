@@ -1,6 +1,8 @@
 package teamrapture.mobularmachinery.tileentity.extruder;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -50,20 +52,34 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
     public void update() {
         super.update();
 
+        if (!world.isRemote) {
+            IBlockState state = world.getBlockState(pos);
+            world.notifyBlockUpdate(pos, state, state, 3);
+        }
+
         this.checkMultiblock();
 
-        /**
-        if(storage.getEnergyStored() >= 800) {
-            workTime++;
-            if(workTime >= 60) {
+        if(isMultiblock && canRun()) {
+            if (storage.getEnergyStored() >= 800) {
+                workTime++;
+                if (workTime >= 60) {
+                    workTime = 0;
+                    if(!world.isRemote) {
+                        world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY() + 2, pos.getZ(), oreList.generateRandomOre()));
+                    }
+                    storage.extractEnergy(800, false);
+                }
+            } else if (workTime > 0) {
                 workTime = 0;
-                world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY() + 1, pos.getZ(), oreList.generateRandomOre()));
-                storage.extractEnergy(800, false);
             }
-        }else if(workTime > 0) {
-            workTime = 0;
         }
-         */
+    }
+
+    public boolean canRun() {
+        if(inventory.getStackInSlot(0).getItem() == Items.DIAMOND) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkMultiblock() {
@@ -79,11 +95,10 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
                 if(world.getBlockState(pos3).getBlock() == ModResources.blockExtruderFrame) {
                     if(world.getBlockState(pos4).getBlock() == ModResources.blockExtruderFrame) {
                         if(world.getBlockState(pos5).getBlock() == ModResources.blockExtruderFrame) {
-                            if(world.getBlockState(pos6).getBlock() == ModResources.blockExtruderFrame) {
+                            if(world.getBlockState(pos6).getBlock() == ModResources.blockExtruderTap) {
                                 if (!isMultiblock) {
                                     isMultiblock = true;
                                 }
-                                System.out.print("Multiblock formed!");
                                 return true;
                             }
                         }

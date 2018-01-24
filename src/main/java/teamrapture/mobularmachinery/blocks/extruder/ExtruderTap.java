@@ -15,30 +15,42 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import teamrapture.mobularmachinery.MobularMachinery;
 import teamrapture.mobularmachinery.client.gui.GuiHandler;
+import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderTap;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityRegionalExtruder;
 
 import javax.annotation.Nullable;
 
-public class RegionalExtruder extends BlockContainer {
+public class ExtruderTap extends BlockContainer {
 
-    public RegionalExtruder() {
+    public ExtruderTap() {
         super(Material.ROCK);
-        this.setRegistryName("regional_extruder");
-        this.setUnlocalizedName("regional_extruder");
+        this.setRegistryName("extruder_tap");
+        this.setUnlocalizedName("extruder_tap");
         this.setCreativeTab(MobularMachinery.mobularTab);
         this.setHardness(1.5f);
-        this.setHarvestLevel("pickaxe", 2);
+        this.setHarvestLevel("pickaxe", 1);
     }
 
+    /**
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        TileEntityRegionalExtruder extruder = (TileEntityRegionalExtruder) world.getTileEntity(pos);
-        if(!world.isRemote && extruder.isMultiblock) {
-            player.openGui(MobularMachinery.instance, GuiHandler.REGIONAL_EXTRUDER, world, pos.getX(), pos.getY(), pos.getZ());
+        TileEntityRegionalExtruder extruder = null;
+        BlockPos extruderPos = null;
+        for (EnumFacing side : EnumFacing.VALUES) {
+            BlockPos cip = pos.offset(side);
+            if(world.getTileEntity(cip) instanceof TileEntityRegionalExtruder) {
+                extruder = (TileEntityRegionalExtruder) world.getTileEntity(cip);
+                extruderPos = cip;
+            }
+        }
+
+        if(!world.isRemote && extruder != null && extruder.isMultiblock && extruderPos != null) {
+            player.openGui(MobularMachinery.instance, GuiHandler.REGIONAL_EXTRUDER, world, extruderPos.getX(), extruderPos.getY(), extruderPos.getZ());
         }
 
         return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
     }
+     */
 
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
@@ -46,8 +58,7 @@ public class RegionalExtruder extends BlockContainer {
     }
 
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
-    {
+    public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.CUTOUT;
     }
 
@@ -64,6 +75,6 @@ public class RegionalExtruder extends BlockContainer {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityRegionalExtruder();
+        return new TileEntityExtruderTap();
     }
 }
