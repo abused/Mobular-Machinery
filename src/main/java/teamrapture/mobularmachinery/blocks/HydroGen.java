@@ -18,6 +18,7 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import teamrapture.mobularmachinery.MobularMachinery;
 import teamrapture.mobularmachinery.client.gui.GuiHandler;
+import teamrapture.mobularmachinery.registry.ModResources;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 import teamrapture.mobularmachinery.utils.FluidUtils;
 
@@ -41,7 +42,7 @@ public class HydroGen extends BlockContainer {
         ItemStack heldItem = player.getHeldItem(hand);
         final TileEntityHydroGen hydroGen = (TileEntityHydroGen) world.getTileEntity(pos);
 
-        if(heldItem != FluidUtil.getFilledBucket(new FluidStack(FluidRegistry.WATER, 1000))) {
+        if(heldItem != FluidUtil.getFilledBucket(new FluidStack(ModResources.steam, 1000))) {
             IFluidHandler handler = hydroGen.getCapability(FLUID_HANDLER_CAPABILITY, facing);
             FluidActionResult res = FluidUtils.interactWithFluidHandler(heldItem, handler, player);
             if (res.isSuccess()) {

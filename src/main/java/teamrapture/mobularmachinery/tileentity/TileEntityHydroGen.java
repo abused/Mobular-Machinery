@@ -11,7 +11,9 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import teamrapture.mobularmachinery.registry.ModResources;
 import teamrapture.mobularmachinery.utils.CustomEnergyStorage;
 
 import javax.annotation.Nullable;
@@ -66,9 +68,9 @@ public class TileEntityHydroGen extends TileEntityInventory implements ITickable
             world.notifyBlockUpdate(pos, state, state, 3);
         }
 
-        if(!inventory.getStackInSlot(0).isEmpty() && inventory.getStackInSlot(0).getItem().equals(Items.WATER_BUCKET)) {
+        if(!inventory.getStackInSlot(0).isEmpty() && inventory.getStackInSlot(0).getItem().equals(FluidUtil.getFilledBucket(new FluidStack(ModResources.steam, 1000)))) {
             if(tank.getCapacity() - tank.getFluidAmount() >= 1000) {
-                tank.fill(new FluidStack(FluidRegistry.WATER, 1000), true);
+                tank.fill(new FluidStack(ModResources.steam, 1000), true);
                 inventory.setStackInSlot(0, new ItemStack(Items.BUCKET));
             }
         }
