@@ -27,12 +27,13 @@ minecraft {
 
 repositories {
     maven {
-        url "https://maven.mcmoddev.com/"
+        url = "http://dvs1.progwml6.com/files/maven"
     }
 }
 
 dependencies {
-    compile "net.ilexiconn:llibrary:1.7.9-1.12.2:dev"
+    deobfCompile "mezz.jei:jei_1.12:4.7.5.85:api"
+    runtime "mezz.jei:jei_1.12:4.7.5.85"
 }
 
 processResources {

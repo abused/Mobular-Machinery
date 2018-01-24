@@ -14,23 +14,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import org.lwjgl.opengl.GL11;
 import teamrapture.mobularmachinery.Info;
-import teamrapture.mobularmachinery.client.gui.container.ContainerHydroGen;
-import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
+import teamrapture.mobularmachinery.client.gui.container.ContainerWaterVaporizer;
+import teamrapture.mobularmachinery.tileentity.TileEntityWaterVaporizer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiHydroGen extends GuiContainer {
+public class GuiWaterVaporizer extends GuiContainer {
 
-    public static ResourceLocation background = new ResourceLocation(Info.MODID, "textures/gui/hydro_gen.png");
+    public static ResourceLocation background = new ResourceLocation(Info.MODID, "textures/gui/water_vaporizer.png");
 
     public static final int WIDTH = 176;
     public static final int HEIGHT = 166;
-    TileEntityHydroGen tile;
+    TileEntityWaterVaporizer tile;
 
-    public GuiHydroGen(ContainerHydroGen containerHydroGen, TileEntityHydroGen te) {
-        super(containerHydroGen);
-        tile = (TileEntityHydroGen) te;
+    public GuiWaterVaporizer(ContainerWaterVaporizer containerWaterVapor, TileEntityWaterVaporizer te) {
+        super(containerWaterVapor);
+        tile = (TileEntityWaterVaporizer) te;
         xSize = WIDTH;
         ySize = HEIGHT;
     }
@@ -57,13 +57,6 @@ public class GuiHydroGen extends GuiContainer {
         renderEnergy();
         renderFluid();
 
-        GL11.glPushMatrix();
-        this.fontRenderer.drawString("Generating", guiLeft + 91, guiTop + 20, 4210752);
-        this.fontRenderer.drawString(tile.generationPerMB + " FU / 20mb", guiLeft + 91, guiTop + 30, 4210752);
-        this.fontRenderer.drawString(tile.storage.getEnergyStored() + " / " + tile.storage.getMaxEnergyStored(), guiLeft + 91, guiTop + 40, 4210752);
-        GL11.glScaled(1, 1.5, 1);
-        GL11.glPopMatrix();
-
         if (this.isPointInRegion(32, 15, 14, 50, mouseX, mouseY)) {
             List<String> energy = new ArrayList<String>();
             energy.add(tile.storage.getEnergyStored() + " / " + tile.storage.getMaxEnergyStored() + "  FU");
@@ -72,7 +65,13 @@ public class GuiHydroGen extends GuiContainer {
 
         if (this.isPointInRegion(9, 15, 14, 50, mouseX, mouseY)) {
             List<String> fluid = new ArrayList<String>();
-            fluid.add(tile.tank.getFluidAmount() + " / " + tile.tank.getCapacity() + "  MB");
+            fluid.add(tile.waterTank.getFluidAmount() + " / " + tile.waterTank.getCapacity() + "  MB");
+            GuiUtils.drawHoveringText(fluid, mouseX, mouseY, mc.displayWidth, mc.displayHeight, -1, mc.fontRenderer);
+        }
+
+        if (this.isPointInRegion(153, 15, 14, 50, mouseX, mouseY)) {
+            List<String> fluid = new ArrayList<String>();
+            fluid.add(tile.vaporTank.getFluidAmount() + " / " + tile.vaporTank.getCapacity() + "  MB");
             GuiUtils.drawHoveringText(fluid, mouseX, mouseY, mc.displayWidth, mc.displayHeight, -1, mc.fontRenderer);
         }
     }
@@ -86,12 +85,12 @@ public class GuiHydroGen extends GuiContainer {
     }
 
     public void renderFluid() {
-        if(tile.tank != null && tile.tank.getFluidAmount() > 0) {
-            int i = tile.tank.getFluidAmount() * 48 / tile.tank.getCapacity();
+        if(tile.waterTank != null && tile.waterTank.getFluidAmount() > 0) {
+            int i = tile.waterTank.getFluidAmount() * 48 / tile.waterTank.getCapacity();
             GlStateManager.pushMatrix();
             GlStateManager.enableBlend();
-            final int color = tile.tank.getFluid().getFluid().getColor();
-            final int brightness = mc.world.getCombinedLight(new BlockPos(guiLeft + 10, guiTop + 7, 0), tile.tank.getFluid().getFluid().getLuminosity());
+            final int color = tile.waterTank.getFluid().getFluid().getColor();
+            final int brightness = mc.world.getCombinedLight(new BlockPos(guiLeft + 10, guiTop + 7, 0), tile.waterTank.getFluid().getFluid().getLuminosity());
             final Minecraft mc = Minecraft.getMinecraft();
             final Tessellator tessellator = Tessellator.getInstance();
             final BufferBuilder buffer = tessellator.getBuffer();
@@ -100,8 +99,32 @@ public class GuiHydroGen extends GuiContainer {
             mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
             setupRenderState();
 
-            final TextureAtlasSprite still = mc.getTextureMapBlocks().getTextureExtry(tile.tank.getFluid().getFluid().getStill().toString());
+            final TextureAtlasSprite still = mc.getTextureMapBlocks().getTextureExtry(tile.waterTank.getFluid().getFluid().getStill().toString());
             addTexturedQuad(buffer, still, guiLeft + 10, guiTop + 64 - i, 12, i, color, brightness);
+
+            tessellator.draw();
+
+            cleanupRenderState();
+            GlStateManager.disableBlend();
+            GlStateManager.popMatrix();
+        }
+
+        if(tile.vaporTank != null && tile.vaporTank.getFluidAmount() > 0) {
+            int i = tile.vaporTank.getFluidAmount() * 48 / tile.vaporTank.getCapacity();
+            GlStateManager.pushMatrix();
+            GlStateManager.enableBlend();
+            final int color = tile.vaporTank.getFluid().getFluid().getColor();
+            final int brightness = mc.world.getCombinedLight(new BlockPos(guiLeft + 10, guiTop + 7, 0), tile.vaporTank.getFluid().getFluid().getLuminosity());
+            final Minecraft mc = Minecraft.getMinecraft();
+            final Tessellator tessellator = Tessellator.getInstance();
+            final BufferBuilder buffer = tessellator.getBuffer();
+
+            buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
+            mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+            setupRenderState();
+
+            final TextureAtlasSprite still = mc.getTextureMapBlocks().getTextureExtry(tile.vaporTank.getFluid().getFluid().getStill().toString());
+            addTexturedQuad(buffer, still, guiLeft + 154, guiTop + 64 - i, 12, i, color, brightness);
 
             tessellator.draw();
 

@@ -1,7 +1,9 @@
 itemGroup.MobularTab=Mobular Machinery
 
 item.item_gear.name=Gear
+item.item_mechanized_egg.name=Mechanized Egg
 
 tile.hydroelectric_generator.name=Hydroelectric Generator
 tile.photon_core.name=Photon Core
 tile.photon_cell.name=Photon Cell
+tile.water_vaporizer.name=Water Vaporizer
