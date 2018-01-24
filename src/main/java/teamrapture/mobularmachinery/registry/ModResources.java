@@ -1,13 +1,17 @@
 package teamrapture.mobularmachinery.registry;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import teamrapture.mobularmachinery.blocks.FluidSteam;
 import teamrapture.mobularmachinery.blocks.HydroGen;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCell;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCore;
@@ -16,6 +20,7 @@ import teamrapture.mobularmachinery.items.ItemBase;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCell;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCore;
+import teamrapture.mobularmachinery.utils.FluidBlock;
 
 public class ModResources {
 
@@ -25,12 +30,21 @@ public class ModResources {
     public static Block blockPhotonCore = new PhotonCore();
     public static Block blockPhotonCell = new PhotonCell();
 
+    public static Fluid steam = new FluidSteam();
+    public static FluidBlock steam_block;
+
     public static void registerResources() {
     	reg(itemMechanizedEgg);
         reg(itemGear);
         reg(blockHydro);
         reg(blockPhotonCore);
         reg(blockPhotonCell);
+
+        FluidRegistry.registerFluid(steam);
+        FluidRegistry.addBucketForFluid(steam);
+
+        steam_block = new FluidBlock(steam, Material.WATER);
+        reg(steam_block);
     }
 
     public static void registerRenders() {
@@ -38,6 +52,8 @@ public class ModResources {
         regRender(itemMechanizedEgg);
         regRender(blockPhotonCore);
         regRender(blockPhotonCell);
+
+        steam_block.regFluid();
     }
 
     public static void registerTE() {

@@ -3,6 +3,7 @@ package teamrapture.mobularmachinery;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -19,6 +20,10 @@ public class MobularMachinery {
 
     @SidedProxy(clientSide = "teamrapture.mobularmachinery.proxy.ClientProxy", serverSide = "teamrapture.mobularmachinery.proxy.CommonProxy")
     static CommonProxy proxy;
+
+    static {
+        FluidRegistry.enableUniversalBucket();
+    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {

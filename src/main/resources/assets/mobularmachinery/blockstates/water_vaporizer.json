@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "mobularmachinery:water_vaporizer" },
+		"inventory": { "model": "mobularmachinery:water_vaporizer" }
+    }
+}
