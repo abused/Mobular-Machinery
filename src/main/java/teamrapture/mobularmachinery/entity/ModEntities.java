@@ -6,10 +6,12 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import teamrapture.mobularmachinery.Info;
 import teamrapture.mobularmachinery.MobularMachinery;
 import teamrapture.mobularmachinery.entity.friendly.EntityMechanicalChicken;
 
 public class ModEntities {
+
 	public static void init() {
 		// Mech Chicken
 		EntityRegistry.registerModEntity(getEntityResource("MechanicalChicken"), EntityMechanicalChicken.class,
@@ -33,7 +35,6 @@ public class ModEntities {
 	}
 
 	private static ResourceLocation getEntityResource(String entityName) {
-		return new ResourceLocation("mobularmachinery", entityName);
+		return new ResourceLocation(Info.MODID, entityName);
 	}
-
 }

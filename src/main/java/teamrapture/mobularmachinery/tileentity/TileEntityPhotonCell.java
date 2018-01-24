@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
@@ -41,24 +42,26 @@ public class TileEntityPhotonCell extends TileEntityBase {
             world.notifyBlockUpdate(pos, state, state, 3);
         }
 
-        for (int i = 0; i < 50; i++) {
-            BlockPos blockPos = new BlockPos(pos.getX(), pos.getY() + i, pos.getZ());
-            Block block = world.getBlockState(blockPos).getBlock();
-            if(i >= 50) {
-                if(block == Blocks.AIR) {
-                    clearSkies = true;
-                }else {
-                    clearSkies = false;
-                }
-            }else {
-                if(clearSkies) {
-                   clearSkies = false;
-                }
+        if(world.canSeeSky(getPos())) {
+            if(!clearSkies) {
+                clearSkies = true;
+            }
+        }else {
+            if(clearSkies) {
+                clearSkies = false;
             }
         }
 
-        if(clearSkies) {
-            storage.receiveEnergy(100, false);
+        for (EnumFacing side : EnumFacing.VALUES) {
+            BlockPos cip = pos.offset(side);
+            if (world.getTileEntity(cip) instanceof TileEntityPhotonCore) {
+                TileEntityPhotonCore te = (TileEntityPhotonCore) world.getTileEntity(cip);
+                if(te.isMultiblock) {
+                    if(clearSkies && world.isDaytime()) {
+                        storage.receiveEnergy(100, false);
+                    }
+                }
+            }
         }
     }
 

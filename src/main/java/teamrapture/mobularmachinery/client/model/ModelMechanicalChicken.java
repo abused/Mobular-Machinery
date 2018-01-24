@@ -4,9 +4,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-/**
- * Mech Chick Created using Tabula 7.0.0
- */
 public class ModelMechanicalChicken extends ModelBase {
 	public ModelRenderer body;
 	public ModelRenderer head;

@@ -16,12 +16,13 @@ import teamrapture.mobularmachinery.registry.ModResources;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
+
 	private static final Minecraft MC = Minecraft.getMinecraft();
+
     @Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
         ModResources.registerTESR();
-        ModEntities.init();
     }
 
     @Override
@@ -40,8 +41,4 @@ public class ClientProxy extends CommonProxy {
     public static void registerModels(ModelRegistryEvent event) {
         ModResources.registerRenders();
     }
-    @Override
-	public void registerEntities(FMLPreInitializationEvent preEvent) {
-		super.registerEntities(preEvent);
-	}
 }
