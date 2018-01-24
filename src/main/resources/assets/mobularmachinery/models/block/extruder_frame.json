@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "mobularmachinery:blocks/extruder_frame"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "mobularmachinery:extruder_frame" },
+		"inventory": { "model": "mobularmachinery:extruder_frame" }
+    }
+}

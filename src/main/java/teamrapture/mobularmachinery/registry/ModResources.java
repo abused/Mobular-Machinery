@@ -14,6 +14,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import teamrapture.mobularmachinery.blocks.FluidSteam;
 import teamrapture.mobularmachinery.blocks.HydroGen;
 import teamrapture.mobularmachinery.blocks.WaterVaporizer;
+import teamrapture.mobularmachinery.blocks.extruder.ExtruderFrame;
+import teamrapture.mobularmachinery.blocks.extruder.RegionalExtruder;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCell;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCore;
 import teamrapture.mobularmachinery.client.render.PhotonCoreRender;
@@ -22,16 +24,19 @@ import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCell;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCore;
 import teamrapture.mobularmachinery.tileentity.TileEntityWaterVaporizer;
+import teamrapture.mobularmachinery.tileentity.extruder.TileEntityRegionalExtruder;
 import teamrapture.mobularmachinery.utils.FluidBlock;
 
 public class ModResources {
 
     public static Item itemGear = new ItemBase("item_gear");
     public static Item itemMechanizedEgg = new ItemBase("item_mechanized_egg");
-    public static Block blockHydro = new HydroGen();
+    public static Block blockHydroGen = new HydroGen();
     public static Block blockPhotonCore = new PhotonCore();
     public static Block blockPhotonCell = new PhotonCell();
     public static Block blockWaterVaporizer = new WaterVaporizer();
+    public static Block blockRegionalExtruder = new RegionalExtruder();
+    public static Block blockExtruderFrame = new ExtruderFrame();
 
     public static Fluid steam = new FluidSteam();
     public static FluidBlock steam_block;
@@ -39,10 +44,12 @@ public class ModResources {
     public static void registerResources() {
     	reg(itemMechanizedEgg);
         reg(itemGear);
-        reg(blockHydro);
+        reg(blockHydroGen);
         reg(blockPhotonCore);
         reg(blockPhotonCell);
         reg(blockWaterVaporizer);
+        reg(blockRegionalExtruder);
+        reg(blockExtruderFrame);
 
         FluidRegistry.registerFluid(steam);
         FluidRegistry.addBucketForFluid(steam);
@@ -57,7 +64,9 @@ public class ModResources {
         regRender(blockPhotonCore);
         regRender(blockPhotonCell);
         regRender(blockWaterVaporizer);
-        regRender(blockHydro);
+        regRender(blockHydroGen);
+        regRender(blockRegionalExtruder);
+        regRender(blockExtruderFrame);
 
         steam_block.regFluid();
     }
@@ -67,6 +76,7 @@ public class ModResources {
         GameRegistry.registerTileEntity(TileEntityPhotonCore.class, "tile_photon_core");
         GameRegistry.registerTileEntity(TileEntityPhotonCell.class, "tile_photon_cell");
         GameRegistry.registerTileEntity(TileEntityWaterVaporizer.class, "tile_water_vaporizer");
+        GameRegistry.registerTileEntity(TileEntityRegionalExtruder.class, "tile_regional_extruder");
     }
 
     public static void registerTESR() {

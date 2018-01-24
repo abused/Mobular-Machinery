@@ -68,24 +68,25 @@ public class TileEntityHydroGen extends TileEntityInventory implements ITickable
             world.notifyBlockUpdate(pos, state, state, 3);
         }
 
-        if(!inventory.getStackInSlot(0).isEmpty() && inventory.getStackInSlot(0).getItem().equals(FluidUtil.getFilledBucket(new FluidStack(ModResources.steam, 1000)))) {
-            if(tank.getCapacity() - tank.getFluidAmount() >= 1000) {
+        if (!inventory.getStackInSlot(0).isEmpty() && inventory.getStackInSlot(0).getItem() == FluidUtil.getFilledBucket(new FluidStack(ModResources.steam, 1000)).getItem()) {
+            if (tank.getCapacity() - tank.getFluidAmount() >= 1000) {
                 tank.fill(new FluidStack(ModResources.steam, 1000), true);
                 inventory.setStackInSlot(0, new ItemStack(Items.BUCKET));
             }
         }
 
-        if(storage.getMaxEnergyStored() - storage.getEnergyStored() >= generationPerMB && tank.getFluidAmount() >= 20) {
-            if(!generating) {
+        if (storage.getMaxEnergyStored() - storage.getEnergyStored() >= generationPerMB && tank.getFluidAmount() >= 20 && tank.getFluid().getFluid() == ModResources.steam) {
+            if (!generating) {
                 generating = true;
             }
             tank.drain(20, true);
             storage.receiveEnergy(generationPerMB, false);
-        }else {
-            if(generating) {
+        } else {
+            if (generating) {
                 generating = false;
             }
         }
+
     }
 
     @Override
