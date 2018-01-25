@@ -3,6 +3,7 @@ itemGroup.MobularTab=Mobular Machinery
 item.item_gear.name=Gear
 item.item_mechanized_egg.name=Mechanized Egg
 item.item_boss_heart.name=Boss Heart
+item.item_mobular_manual.name=Mobular Manual
 
 tile.hydroelectric_generator.name=Hydroelectric Generator
 tile.photon_core.name=Photon Core
@@ -12,8 +13,13 @@ tile.regional_extruder.name=Regional Extruder Core
 tile.extruder_frame.name=Regional Extruder Frame
 tile.extruder_tap.name=Regional Extruder Tap
 tile.extruder_inventory.name=Regional Extruder Inventory Interface
+tile.block_gear.name=Gear Block
 
 entity.MechanicalChicken.name=Mechanical Chicken
 entity.MechanicalOctopus.name=Mechanical Octopus
 
 fluid.fluid_steam=Steam
+
+mobularmachinery.format.text=Welcome to the Mobular Machinery manual! Here you can read up on how to work with various mobs/machines, such as bosses, or even the Photon Generator!<br><br>Please Report any issues you come across on our github!
+format.machines=Here you can learn about all the machines and functions of them that are currently available! Just proceed to the next page to learn more!
+format.mobs=Here you can learn about all the mobs and functions of them that are currently available! Just proceed to the next page to learn more!

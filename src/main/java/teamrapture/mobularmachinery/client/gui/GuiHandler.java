@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import teamrapture.mobularmachinery.client.gui.container.ContainerHydroGen;
 import teamrapture.mobularmachinery.client.gui.container.ContainerRegionalExtruder;
 import teamrapture.mobularmachinery.client.gui.container.ContainerWaterVaporizer;
+import teamrapture.mobularmachinery.client.gui.manual.GuiManual;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 import teamrapture.mobularmachinery.tileentity.TileEntityWaterVaporizer;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityRegionalExtruder;
@@ -19,6 +20,7 @@ public class GuiHandler implements IGuiHandler {
     public static final int HYDRO_GEN = 0;
     public static final int WATER_VAPORIZER = 1;
     public static final int REGIONAL_EXTRUDER = 2;
+    public static final int MOBULAR_MANUAL = 3;
 
     @Nullable
     @Override
@@ -67,6 +69,10 @@ public class GuiHandler implements IGuiHandler {
         if (ID == REGIONAL_EXTRUDER) {
             TileEntityRegionalExtruder tileEntityRegionalExtruder = (TileEntityRegionalExtruder) te;
             return new GuiRegionalExtruder(new ContainerRegionalExtruder(player.inventory, tileEntityRegionalExtruder), tileEntityRegionalExtruder);
+        }
+
+        if (ID == MOBULAR_MANUAL) {
+            return new GuiManual();
         }
         return null;
     }

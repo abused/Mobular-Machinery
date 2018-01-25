@@ -12,6 +12,7 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import teamrapture.mobularmachinery.blocks.FluidSteam;
+import teamrapture.mobularmachinery.blocks.GearBlock;
 import teamrapture.mobularmachinery.blocks.HydroGen;
 import teamrapture.mobularmachinery.blocks.WaterVaporizer;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderFrame;
@@ -22,6 +23,7 @@ import teamrapture.mobularmachinery.blocks.photon.PhotonCell;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCore;
 import teamrapture.mobularmachinery.client.render.PhotonCoreRender;
 import teamrapture.mobularmachinery.items.ItemBase;
+import teamrapture.mobularmachinery.items.ItemManual;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCell;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCore;
@@ -36,6 +38,7 @@ public class ModResources {
     public static Item itemGear = new ItemBase("item_gear");
     public static Item itemMechanizedEgg = new ItemBase("item_mechanized_egg");
     public static Item itemBossHeart = new ItemBase("item_boss_heart");
+    public static Item itemManual = new ItemManual();
     public static Block blockHydroGen = new HydroGen();
     public static Block blockPhotonCore = new PhotonCore();
     public static Block blockPhotonCell = new PhotonCell();
@@ -44,6 +47,7 @@ public class ModResources {
     public static Block blockExtruderFrame = new ExtruderFrame();
     public static Block blockExtruderTap = new ExtruderTap();
     public static Block blockExtruderInventory = new ExtruderInventory();
+    public static Block blockGear = new GearBlock();
 
     public static Fluid steam = new FluidSteam();
     public static FluidBlock steam_block;
@@ -52,6 +56,7 @@ public class ModResources {
     	reg(itemMechanizedEgg);
         reg(itemGear);
         reg(itemBossHeart);
+        reg(itemManual);
         reg(blockHydroGen);
         reg(blockPhotonCore);
         reg(blockPhotonCell);
@@ -60,6 +65,7 @@ public class ModResources {
         reg(blockExtruderFrame);
         reg(blockExtruderTap);
         reg(blockExtruderInventory);
+        reg(blockGear);
 
         FluidRegistry.registerFluid(steam);
         FluidRegistry.addBucketForFluid(steam);
@@ -72,6 +78,7 @@ public class ModResources {
         regRender(itemGear);
         regRender(itemMechanizedEgg);
         regRender(itemBossHeart);
+        regRender(itemManual);
         regRender(blockPhotonCore);
         regRender(blockPhotonCell);
         regRender(blockWaterVaporizer);
@@ -80,6 +87,7 @@ public class ModResources {
         regRender(blockExtruderFrame);
         regRender(blockExtruderTap);
         regRender(blockExtruderInventory);
+        regRender(blockGear);
 
         steam_block.regFluid();
     }

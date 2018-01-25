@@ -111,8 +111,8 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
             if(world.getBlockState(pos2).getBlock() == ModResources.blockExtruderFrame) {
                 if(world.getBlockState(pos3).getBlock() == ModResources.blockExtruderFrame) {
                     if(world.getBlockState(pos4).getBlock() == ModResources.blockExtruderFrame) {
-                        if(world.getBlockState(pos5).getBlock() == ModResources.blockExtruderInventory) {
-                            if(world.getBlockState(pos6).getBlock() == ModResources.blockExtruderTap) {
+                        if(world.getBlockState(pos5).getBlock() == ModResources.blockExtruderTap || world.getBlockState(pos5).getBlock() == ModResources.blockExtruderInventory) {
+                            if(world.getBlockState(pos6).getBlock() == ModResources.blockExtruderInventory || world.getBlockState(pos6).getBlock() == ModResources.blockExtruderTap) {
                                 if (!isMultiblock) {
                                     isMultiblock = true;
                                 }
