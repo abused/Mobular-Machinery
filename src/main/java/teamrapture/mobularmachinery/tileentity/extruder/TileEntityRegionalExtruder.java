@@ -77,7 +77,7 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
     }
 
     public boolean canRun() {
-        if (inventory.getStackInSlot(0).getItem() == Items.DIAMOND) {
+        if (inventory.getStackInSlot(0).getItem() == ModResources.itemBossHeart) {
             if(slotWithOre() != 0) {
                 return true;
             }

@@ -2,6 +2,7 @@ itemGroup.MobularTab=Mobular Machinery
 
 item.item_gear.name=Gear
 item.item_mechanized_egg.name=Mechanized Egg
+item.item_boss_heart.name=Boss Heart
 
 tile.hydroelectric_generator.name=Hydroelectric Generator
 tile.photon_core.name=Photon Core

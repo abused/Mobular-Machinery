@@ -35,6 +35,7 @@ public class ModResources {
 
     public static Item itemGear = new ItemBase("item_gear");
     public static Item itemMechanizedEgg = new ItemBase("item_mechanized_egg");
+    public static Item itemBossHeart = new ItemBase("item_boss_heart");
     public static Block blockHydroGen = new HydroGen();
     public static Block blockPhotonCore = new PhotonCore();
     public static Block blockPhotonCell = new PhotonCell();
@@ -50,6 +51,7 @@ public class ModResources {
     public static void registerResources() {
     	reg(itemMechanizedEgg);
         reg(itemGear);
+        reg(itemBossHeart);
         reg(blockHydroGen);
         reg(blockPhotonCore);
         reg(blockPhotonCell);
@@ -69,6 +71,7 @@ public class ModResources {
     public static void registerRenders() {
         regRender(itemGear);
         regRender(itemMechanizedEgg);
+        regRender(itemBossHeart);
         regRender(blockPhotonCore);
         regRender(blockPhotonCell);
         regRender(blockWaterVaporizer);
