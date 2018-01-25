@@ -62,7 +62,7 @@ public class TileEntityInventory extends TileEntityBase {
         return true;
     }
 
-    public boolean canExtractItem(int slot, ItemStack stack){
+    public boolean canExtractItem(int slot, ItemStack stack) {
         return true;
     }
 

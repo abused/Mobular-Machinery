@@ -56,7 +56,7 @@ public class CustomItemStackHandler extends ItemStackHandler {
         return true;
     }
 
-    public boolean canExtract(ItemStack stack, int slot){
+    public boolean canExtract(ItemStack stack, int slot) {
         return true;
     }
 }

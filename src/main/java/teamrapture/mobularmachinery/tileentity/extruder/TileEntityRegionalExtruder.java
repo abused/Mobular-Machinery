@@ -9,16 +9,12 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.oredict.OreDictionary;
 import teamrapture.mobularmachinery.blocks.extruder.OreList;
 import teamrapture.mobularmachinery.registry.ModResources;
 import teamrapture.mobularmachinery.tileentity.TileEntityInventory;
 import teamrapture.mobularmachinery.utils.CustomEnergyStorage;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class TileEntityRegionalExtruder extends TileEntityInventory {
 
@@ -26,9 +22,11 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
     public int workTime = 0;
     public boolean isMultiblock = false;
     public OreList oreList;
+    public int i = 1;
+    public ItemStack randomStack;
 
     public TileEntityRegionalExtruder() {
-        super(1);
+        super(10);
         oreList = new OreList();
     }
 
@@ -51,6 +49,7 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
     @Override
     public void update() {
         super.update();
+        randomStack = oreList.generateRandomOre();
 
         if (!world.isRemote) {
             IBlockState state = world.getBlockState(pos);
@@ -62,10 +61,12 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
         if(isMultiblock && canRun()) {
             if (storage.getEnergyStored() >= 800) {
                 workTime++;
-                if (workTime >= 60) {
+                if (workTime >= 50) {
                     workTime = 0;
-                    if(!world.isRemote) {
-                        world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY() + 2, pos.getZ(), oreList.generateRandomOre()));
+                    if(!inventory.getStackInSlot(slotWithOre()).isEmpty() && inventory.getStackInSlot(slotWithOre()).getCount() < 64) {
+                        inventory.getStackInSlot(slotWithOre()).grow(1);
+                    }else if(inventory.getStackInSlot(slotWithOre()).isEmpty()) {
+                        inventory.setStackInSlot(slotWithOre(), randomStack);
                     }
                     storage.extractEnergy(800, false);
                 }
@@ -76,10 +77,26 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
     }
 
     public boolean canRun() {
-        if(inventory.getStackInSlot(0).getItem() == Items.DIAMOND) {
-            return true;
+        if (inventory.getStackInSlot(0).getItem() == Items.DIAMOND) {
+            if(slotWithOre() != 0) {
+                return true;
+            }
         }
         return false;
+    }
+
+    public int slotWithOre() {
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            if (i != 0) {
+                if(inventory.getStackInSlot(i) == randomStack && inventory.getStackInSlot(i).getCount() < 64) {
+                    return  i;
+                } else if(inventory.getStackInSlot(i) != randomStack && inventory.getStackInSlot(i).isEmpty()) {
+                    return i;
+                }
+            }
+        }
+
+        return 0;
     }
 
     public boolean checkMultiblock() {
@@ -94,7 +111,7 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
             if(world.getBlockState(pos2).getBlock() == ModResources.blockExtruderFrame) {
                 if(world.getBlockState(pos3).getBlock() == ModResources.blockExtruderFrame) {
                     if(world.getBlockState(pos4).getBlock() == ModResources.blockExtruderFrame) {
-                        if(world.getBlockState(pos5).getBlock() == ModResources.blockExtruderFrame) {
+                        if(world.getBlockState(pos5).getBlock() == ModResources.blockExtruderInventory) {
                             if(world.getBlockState(pos6).getBlock() == ModResources.blockExtruderTap) {
                                 if (!isMultiblock) {
                                     isMultiblock = true;
@@ -111,6 +128,11 @@ public class TileEntityRegionalExtruder extends TileEntityInventory {
             isMultiblock = false;
         }
         return false;
+    }
+
+    @Override
+    public boolean canExtractItem(int slot, ItemStack stack) {
+        return slot != 0 ? true : false;
     }
 
     @Override

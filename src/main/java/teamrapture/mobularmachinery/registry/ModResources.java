@@ -15,6 +15,7 @@ import teamrapture.mobularmachinery.blocks.FluidSteam;
 import teamrapture.mobularmachinery.blocks.HydroGen;
 import teamrapture.mobularmachinery.blocks.WaterVaporizer;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderFrame;
+import teamrapture.mobularmachinery.blocks.extruder.ExtruderInventory;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderTap;
 import teamrapture.mobularmachinery.blocks.extruder.RegionalExtruder;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCell;
@@ -25,6 +26,7 @@ import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCell;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCore;
 import teamrapture.mobularmachinery.tileentity.TileEntityWaterVaporizer;
+import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderInventory;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderTap;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityRegionalExtruder;
 import teamrapture.mobularmachinery.utils.FluidBlock;
@@ -40,6 +42,7 @@ public class ModResources {
     public static Block blockRegionalExtruder = new RegionalExtruder();
     public static Block blockExtruderFrame = new ExtruderFrame();
     public static Block blockExtruderTap = new ExtruderTap();
+    public static Block blockExtruderInventory = new ExtruderInventory();
 
     public static Fluid steam = new FluidSteam();
     public static FluidBlock steam_block;
@@ -54,6 +57,7 @@ public class ModResources {
         reg(blockRegionalExtruder);
         reg(blockExtruderFrame);
         reg(blockExtruderTap);
+        reg(blockExtruderInventory);
 
         FluidRegistry.registerFluid(steam);
         FluidRegistry.addBucketForFluid(steam);
@@ -72,6 +76,7 @@ public class ModResources {
         regRender(blockRegionalExtruder);
         regRender(blockExtruderFrame);
         regRender(blockExtruderTap);
+        regRender(blockExtruderInventory);
 
         steam_block.regFluid();
     }
@@ -83,6 +88,7 @@ public class ModResources {
         GameRegistry.registerTileEntity(TileEntityWaterVaporizer.class, "tile_water_vaporizer");
         GameRegistry.registerTileEntity(TileEntityRegionalExtruder.class, "tile_regional_extruder");
         GameRegistry.registerTileEntity(TileEntityExtruderTap.class, "tile_extruder_tap");
+        GameRegistry.registerTileEntity(TileEntityExtruderInventory.class, "tile_extruder_inventory");
     }
 
     public static void registerTESR() {

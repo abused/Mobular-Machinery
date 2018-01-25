@@ -10,6 +10,7 @@ tile.water_vaporizer.name=Water Vaporizer
 tile.regional_extruder.name=Regional Extruder Core
 tile.extruder_frame.name=Regional Extruder Frame
 tile.extruder_tap.name=Regional Extruder Tap
+tile.extruder_inventory.name=Regional Extruder Inventory Interface
 
 entity.MechanicalChicken.name=Mechanical Chicken
 entity.MechanicalOctopus.name=Mechanical Octopus

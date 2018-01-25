@@ -6,6 +6,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import teamrapture.mobularmachinery.client.gui.slots.SlotInput;
+import teamrapture.mobularmachinery.client.gui.slots.SlotOutput;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityRegionalExtruder;
 
 public class ContainerRegionalExtruder extends Container {
@@ -17,6 +18,10 @@ public class ContainerRegionalExtruder extends Container {
         tileEntityRegionalExtruder = te;
 
         addSlotToContainer(new SlotInput(this.tileEntityRegionalExtruder.inventory, 0, 80, 8));
+
+        for(int s = 1; s < 10; s++) {
+            addSlotToContainer(new SlotOutput(this.tileEntityRegionalExtruder.inventory, s, -10 + s * 18, 52));
+        }
 
         int i;
         for (i = 0; i < 3; ++i) {
@@ -36,7 +41,43 @@ public class ContainerRegionalExtruder extends Container {
     }
 
     @Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        return super.transferStackInSlot(playerIn, index);
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    {
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slot = this.inventorySlots.get(index);
+
+        if (slot != null && slot.getHasStack())
+        {
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+
+            if (index == 0 || index == 1 || index == 2 || index == 3 || index == 4 || index == 5 || index == 6 || index == 7 || index == 8 || index == 9)
+            {
+                if (!this.mergeItemStack(itemstack1, 3, 37, true))
+                {
+                    return ItemStack.EMPTY;
+                }
+
+                slot.onSlotChange(itemstack1, itemstack);
+            }
+
+            if (itemstack1.isEmpty())
+            {
+                slot.putStack(ItemStack.EMPTY);
+            }
+            else
+            {
+                slot.onSlotChanged();
+            }
+
+            if (itemstack1.getCount() == itemstack.getCount())
+            {
+                return ItemStack.EMPTY;
+            }
+
+            slot.onTake(playerIn, itemstack1);
+        }
+
+        return itemstack;
     }
 }

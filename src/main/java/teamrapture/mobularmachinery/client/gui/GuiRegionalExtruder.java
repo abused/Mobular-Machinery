@@ -55,7 +55,7 @@ public class GuiRegionalExtruder extends GuiContainer {
 
         if (this.isPointInRegion(117, 12, 50, 7, mouseX, mouseY)) {
             List<String> fluid = new ArrayList<String>();
-            fluid.add(tile.workTime + " / 40  Work");
+            fluid.add(tile.workTime + " / 50  Work");
             GuiUtils.drawHoveringText(fluid, mouseX, mouseY, mc.displayWidth, mc.displayHeight, -1, mc.fontRenderer);
         }
     }
@@ -71,7 +71,7 @@ public class GuiRegionalExtruder extends GuiContainer {
     public void renderWork() {
         if (tile.workTime > 0) {
             int i = 48;
-            int j = tile.workTime * i / 40;
+            int j = tile.workTime * i / 50;
             drawTexturedModalRect(guiLeft + 118, guiTop + 13, 178, 15, j, 5);
         }
     }
