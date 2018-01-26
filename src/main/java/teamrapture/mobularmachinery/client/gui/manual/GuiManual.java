@@ -226,6 +226,19 @@ public class GuiManual extends GuiScreen {
             if (mainPages == 1) {
                 if (machinePages > 0) {
                     machinePages--;
+                }else {
+                    mainPages = 0;
+                    machinePages = 0;
+                }
+            }
+
+            if(mainPages == 2) {
+                if(mobPages > 0) {
+                    mobPages--;
+                }else {
+                    mainPages = 1;
+                    mobPages = 0;
+                    machinePages = 8;
                 }
             }
         }
