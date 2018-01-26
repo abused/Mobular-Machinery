@@ -13,7 +13,7 @@ public class RenderMechOctopusBoss extends RenderLiving<EntityMechOctopusBoss>{
 
 	    public RenderMechOctopusBoss(RenderManager render)
 	    {
-	        super(render, new ModelMechOctopusBoss(), 0.3F);
+	        super(render, new ModelMechOctopusBoss(), 1.0F);
 	    }
 
 	    /**

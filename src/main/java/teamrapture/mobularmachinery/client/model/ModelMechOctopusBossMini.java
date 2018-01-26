@@ -4,14 +4,13 @@ import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
-import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import teamrapture.mobularmachinery.entity.boss.EntityMechOctopusBoss;
+import teamrapture.mobularmachinery.entity.monster.EntitySquiddyAttackers;
 
 /**
  * Octipi - Thundercat Created using Tabula 7.0.0
  */
-public class ModelMechOctopusBoss extends AdvancedModelBase {
+public class ModelMechOctopusBossMini extends AdvancedModelBase {
 	public AdvancedModelRenderer Head;
 	public AdvancedModelRenderer eyeRight;
 	public AdvancedModelRenderer eyeLeft;
@@ -270,7 +269,7 @@ public class ModelMechOctopusBoss extends AdvancedModelBase {
 	public AdvancedModelRenderer tentOneBase_175;
 	private ModelAnimator animation;
 
-	public ModelMechOctopusBoss() {
+	public ModelMechOctopusBossMini() {
 		animation = ModelAnimator.create();
 		this.textureWidth = 128;
 		this.textureHeight = 128;
@@ -1526,7 +1525,7 @@ public class ModelMechOctopusBoss extends AdvancedModelBase {
 	}
 
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5,
-			EntityMechOctopusBoss entity) {
+			EntitySquiddyAttackers entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		resetToDefaultPose();
 		AdvancedModelRenderer[] tentacle = { this.tentOneBase, this.tentOneBase_8, this.tentOneBase_9,
@@ -1614,13 +1613,13 @@ public class ModelMechOctopusBoss extends AdvancedModelBase {
 	}
 
 	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		EntityMechOctopusBoss entityMechOctopusBoss = (EntityMechOctopusBoss) entity;
+		EntitySquiddyAttackers EntitySquiddyAttackers = (EntitySquiddyAttackers) entity;
 		animation.update(entity);
 		resetToDefaultPose();
-		setRotationAngles(f, f1, f2, f3, f4, f5, entityMechOctopusBoss);
-		animation.setAnimation(entityMechOctopusBoss.ATTACK_ANIMATION);
+		setRotationAngles(f, f1, f2, f3, f4, f5, EntitySquiddyAttackers);
+		animation.setAnimation(EntitySquiddyAttackers.ATTACK_ANIMATION);
 		animation.startKeyframe(20);
-		// f = entityMechOctopusBoss.ticksExisted;
+		// f = EntitySquiddyAttackers.ticksExisted;
 		// f1 = 0.5f;
 		float globalSpeed = 0.5f;
 		float globalDegree = 1.0f;

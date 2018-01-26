@@ -35,93 +35,104 @@ import teamrapture.mobularmachinery.utils.FluidBlock;
 
 public class ModResources {
 
-    public static Item itemGear = new ItemBase("item_gear");
-    public static Item itemMechanizedEgg = new ItemBase("item_mechanized_egg");
-    public static Item itemBossHeart = new ItemBase("item_boss_heart");
-    public static Item itemManual = new ItemManual();
-    public static Block blockHydroGen = new HydroGen();
-    public static Block blockPhotonCore = new PhotonCore();
-    public static Block blockPhotonCell = new PhotonCell();
-    public static Block blockWaterVaporizer = new WaterVaporizer();
-    public static Block blockRegionalExtruder = new RegionalExtruder();
-    public static Block blockExtruderFrame = new ExtruderFrame();
-    public static Block blockExtruderTap = new ExtruderTap();
-    public static Block blockExtruderInventory = new ExtruderInventory();
-    public static Block blockGear = new GearBlock();
+	public static Item itemGear = new ItemBase("item_gear");
+	public static Item itemMechanizedEgg = new ItemBase("item_mechanized_egg");
+	public static Item itemBossHeart = new ItemBase("item_boss_heart");
+	public static Item itemDummyEntityOctoThrowable = new ItemBase("octo");
+	public static Item itemSteamDummyItem = new ItemBase("steam");
+	
+	public static Item itemManual = new ItemManual();
 
-    public static Fluid steam = new FluidSteam();
-    public static FluidBlock steam_block;
+	public static Block blockHydroGen = new HydroGen();
+	public static Block blockPhotonCore = new PhotonCore();
+	public static Block blockPhotonCell = new PhotonCell();
+	public static Block blockWaterVaporizer = new WaterVaporizer();
+	public static Block blockRegionalExtruder = new RegionalExtruder();
+	public static Block blockExtruderFrame = new ExtruderFrame();
+	public static Block blockExtruderTap = new ExtruderTap();
+	public static Block blockExtruderInventory = new ExtruderInventory();
+	public static Block blockGear = new GearBlock();
 
-    public static void registerResources() {
-    	reg(itemMechanizedEgg);
-        reg(itemGear);
-        reg(itemBossHeart);
-        reg(itemManual);
-        reg(blockHydroGen);
-        reg(blockPhotonCore);
-        reg(blockPhotonCell);
-        reg(blockWaterVaporizer);
-        reg(blockRegionalExtruder);
-        reg(blockExtruderFrame);
-        reg(blockExtruderTap);
-        reg(blockExtruderInventory);
-        reg(blockGear);
+	public static Fluid steam = new FluidSteam();
+	public static FluidBlock steam_block;
 
-        FluidRegistry.registerFluid(steam);
-        FluidRegistry.addBucketForFluid(steam);
+	public static void registerResources() {
+		reg(itemMechanizedEgg);
+		reg(itemGear);
+		reg(itemSteamDummyItem);
+		reg(itemBossHeart);
+		reg(itemManual);
+		reg(itemDummyEntityOctoThrowable);
+		reg(blockHydroGen);
+		reg(blockPhotonCore);
+		reg(blockPhotonCell);
+		reg(blockWaterVaporizer);
+		reg(blockRegionalExtruder);
+		reg(blockExtruderFrame);
+		reg(blockExtruderTap);
+		reg(blockExtruderInventory);
+		reg(blockGear);
 
-        steam_block = new FluidBlock(steam, Material.WATER);
-        reg(steam_block);
-    }
+		FluidRegistry.registerFluid(steam);
+		FluidRegistry.addBucketForFluid(steam);
 
-    public static void registerRenders() {
-        regRender(itemGear);
-        regRender(itemMechanizedEgg);
-        regRender(itemBossHeart);
-        regRender(itemManual);
-        regRender(blockPhotonCore);
-        regRender(blockPhotonCell);
-        regRender(blockWaterVaporizer);
-        regRender(blockHydroGen);
-        regRender(blockRegionalExtruder);
-        regRender(blockExtruderFrame);
-        regRender(blockExtruderTap);
-        regRender(blockExtruderInventory);
-        regRender(blockGear);
+		steam_block = new FluidBlock(steam, Material.WATER);
+		reg(steam_block);
+	}
 
-        steam_block.regFluid();
-    }
+	public static void registerRenders() {
+		regRender(itemGear);
+		regRender(itemSteamDummyItem);
+		regRender(itemMechanizedEgg);
+		regRender(itemBossHeart);
+		regRender(itemDummyEntityOctoThrowable);
+		regRender(itemManual);
+		regRender(blockPhotonCore);
+		regRender(blockPhotonCell);
+		regRender(blockWaterVaporizer);
+		regRender(blockHydroGen);
+		regRender(blockRegionalExtruder);
+		regRender(blockExtruderFrame);
+		regRender(blockExtruderTap);
+		regRender(blockExtruderInventory);
+		regRender(blockGear);
 
-    public static void registerTE() {
-        GameRegistry.registerTileEntity(TileEntityHydroGen.class, "tile_hydro_gen");
-        GameRegistry.registerTileEntity(TileEntityPhotonCore.class, "tile_photon_core");
-        GameRegistry.registerTileEntity(TileEntityPhotonCell.class, "tile_photon_cell");
-        GameRegistry.registerTileEntity(TileEntityWaterVaporizer.class, "tile_water_vaporizer");
-        GameRegistry.registerTileEntity(TileEntityRegionalExtruder.class, "tile_regional_extruder");
-        GameRegistry.registerTileEntity(TileEntityExtruderTap.class, "tile_extruder_tap");
-        GameRegistry.registerTileEntity(TileEntityExtruderInventory.class, "tile_extruder_inventory");
-    }
+		steam_block.regFluid();
+	}
 
-    public static void registerTESR() {
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhotonCore.class, new PhotonCoreRender());
-    }
+	public static void registerTE() {
+		GameRegistry.registerTileEntity(TileEntityHydroGen.class, "tile_hydro_gen");
+		GameRegistry.registerTileEntity(TileEntityPhotonCore.class, "tile_photon_core");
+		GameRegistry.registerTileEntity(TileEntityPhotonCell.class, "tile_photon_cell");
+		GameRegistry.registerTileEntity(TileEntityWaterVaporizer.class, "tile_water_vaporizer");
+		GameRegistry.registerTileEntity(TileEntityRegionalExtruder.class, "tile_regional_extruder");
+		GameRegistry.registerTileEntity(TileEntityExtruderTap.class, "tile_extruder_tap");
+		GameRegistry.registerTileEntity(TileEntityExtruderInventory.class, "tile_extruder_inventory");
+	}
 
-    public static void regRender(Object object) {
-        if(object instanceof Block) {
-            ModelResourceLocation res = new ModelResourceLocation(((Block) object).getRegistryName().toString(), "inventory");
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock((Block) object), 0, res);
-        }else if(object instanceof Item) {
-            ModelResourceLocation res = new ModelResourceLocation(((Item) object).getRegistryName().toString(), "inventory");
-            ModelLoader.setCustomModelResourceLocation((Item) object, 0, res);
-        }
-    }
+	public static void registerTESR() {
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhotonCore.class, new PhotonCoreRender());
+	}
 
-    public static void reg(Object object) {
-        if(object instanceof Block) {
-            ForgeRegistries.BLOCKS.register((Block) object);
-            ForgeRegistries.ITEMS.register(new ItemBlock((Block) object).setRegistryName(((Block) object).getRegistryName()));
-        }else if(object instanceof Item) {
-            ForgeRegistries.ITEMS.register((Item) object);
-        }
-    }
+	public static void regRender(Object object) {
+		if (object instanceof Block) {
+			ModelResourceLocation res = new ModelResourceLocation(((Block) object).getRegistryName().toString(),
+					"inventory");
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock((Block) object), 0, res);
+		} else if (object instanceof Item) {
+			ModelResourceLocation res = new ModelResourceLocation(((Item) object).getRegistryName().toString(),
+					"inventory");
+			ModelLoader.setCustomModelResourceLocation((Item) object, 0, res);
+		}
+	}
+
+	public static void reg(Object object) {
+		if (object instanceof Block) {
+			ForgeRegistries.BLOCKS.register((Block) object);
+			ForgeRegistries.ITEMS
+					.register(new ItemBlock((Block) object).setRegistryName(((Block) object).getRegistryName()));
+		} else if (object instanceof Item) {
+			ForgeRegistries.ITEMS.register((Item) object);
+		}
+	}
 }
