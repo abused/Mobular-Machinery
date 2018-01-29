@@ -48,7 +48,7 @@ public class RenderSquiddyAttacker extends Render<EntitySquiddyAttacker> {
 		float f1 = entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks;
 		GlStateManager.translate((float) x, (float) y, (float) z);
 		GlStateManager.enableRescaleNormal();
-		GlStateManager.scale(-1.0F, -1.0F, 1.0F);
+		GlStateManager.scale(-0.5F, -0.5F, 0.5F);
 		GlStateManager.enableAlpha();
 		this.bindEntityTexture(entity);
 

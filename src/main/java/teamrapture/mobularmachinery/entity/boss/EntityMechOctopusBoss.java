@@ -1,9 +1,17 @@
 package teamrapture.mobularmachinery.entity.boss;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
@@ -22,9 +30,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntitySelectors;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -39,6 +51,13 @@ public class EntityMechOctopusBoss extends EntityMob implements IAnimatedEntity,
 	public Animation ATTACK_ANIMATION;
 	private int animationTick;
 	private Animation currentAnim;
+	private static final Predicate<Entity> NO_BAD_ENTITY = new Predicate<Entity>() {
+		public boolean apply(@Nullable Entity p_apply_1_) {
+			return p_apply_1_ instanceof EntityLivingBase
+					&& ((EntityLivingBase) p_apply_1_).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD
+					&& ((EntityLivingBase) p_apply_1_).attackable();
+		}
+	};
 
 	public EntityMechOctopusBoss(World worldIn) {
 		super(worldIn);
@@ -54,19 +73,22 @@ public class EntityMechOctopusBoss extends EntityMob implements IAnimatedEntity,
 
 	@Override
 	protected void initEntityAI() {
-		tasks.addTask(1, new EntityAISwimming(this));
-		tasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 0, true, false, null));
+		this.tasks.addTask(1, new EntityAIAttackRanged(this, 0.25D, 200, 5.0F));
 		tasks.addTask(3, new EntityAIAttackMelee(this, 1, true));
-		tasks.addTask(4, new EntityAIAttackRanged(this, 2.25D, 60, 100.0F));
-		tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-		tasks.addTask(6, new EntityAILookIdle(this));
-		targetTasks.addTask(7, new EntityAIHurtByTarget(this, false, new Class[0]));
 
+		tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+
+		targetTasks.addTask(7, new EntityAIHurtByTarget(this, false, new Class[0]));
+		this.tasks.addTask(4, new EntityAILookIdle(this));
+		this.targetTasks.addTask(2,
+				new EntityAINearestAttackableTarget(this, EntityPlayer.class, 10, false, false, NO_BAD_ENTITY));
 	}
 
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		super.updateAITasks();
+
 		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 12
 				&& this.getAttackTarget() != null) {
 			this.attackEntityAsMob(this.getAttackTarget());
@@ -129,9 +151,9 @@ public class EntityMechOctopusBoss extends EntityMob implements IAnimatedEntity,
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(300.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6000000238418579D);
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4000000238418579D);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(4.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.0D);
 	}
 
 	public boolean isNonBoss() {
@@ -167,6 +189,19 @@ public class EntityMechOctopusBoss extends EntityMob implements IAnimatedEntity,
 		 * this.world.getGameRules().getBoolean("mobGriefing"));
 		 * //this.world.playBroadcastSound(1023, new BlockPos(this), 0);
 		 */
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
+				this.posZ, 0.0D, 0.0456D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
+				this.posZ , 0.0D, 0.055D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
+				this.posZ , 0.0D, 0.045D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
+				this.posZ , 0.0D, 0.035D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
+				this.posZ , 0.0D, 0.05D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
+				this.posZ , 0.0D, 0.04D, 0.0D);
+
 		{
 			super.updateAITasks();
 
@@ -221,9 +256,9 @@ public class EntityMechOctopusBoss extends EntityMob implements IAnimatedEntity,
 	 */
 	private void launchSquiddies(int pos, double x, double y, double z) {
 		this.world.playEvent(null, 1024, new BlockPos(this), 0);
-		double d0 = this.getX(pos);
-		double d1 = this.getY(pos);
-		double d2 = this.getZ(pos);
+		double d0 = this.posX;
+		double d1 = this.posY;
+		double d2 = this.posZ;
 		double d3 = x - d0;
 		double d4 = y - d1;
 		double d5 = z - d2;

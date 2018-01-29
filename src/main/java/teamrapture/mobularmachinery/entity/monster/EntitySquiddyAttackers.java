@@ -2,11 +2,15 @@ package teamrapture.mobularmachinery.entity.monster;
 
 import javax.annotation.Nullable;
 
+import com.google.common.base.Predicate;
+
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackRanged;
@@ -14,7 +18,6 @@ import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
@@ -28,13 +31,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import teamrapture.mobularmachinery.entity.nonliving.EntitySteamStream;
 
 public class EntitySquiddyAttackers extends EntityMob implements IRangedAttackMob, IAnimatedEntity {
 	public Animation ATTACK_ANIMATION;
 	private int animationTick;
 	private Animation currentAnim;
-
+	private static final Predicate<Entity> NO_BAD_ENTITY = new Predicate<Entity>() {
+		public boolean apply(@Nullable Entity p_apply_1_) {
+			return p_apply_1_ instanceof EntityLivingBase
+					&& ((EntityLivingBase) p_apply_1_).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD
+					&& ((EntityLivingBase) p_apply_1_).attackable();
+		}
+	};
 	public EntitySquiddyAttackers(World worldIn) {
 		super(worldIn);
 		this.setSize(0.7F, 1.9F);
@@ -46,11 +57,15 @@ public class EntitySquiddyAttackers extends EntityMob implements IRangedAttackMo
 
 	@Override
 	protected void initEntityAI() {
-		this.tasks.addTask(1, new EntityAIAttackRanged(this, 1.25D, 20, 10.0F));
+		this.tasks.addTask(1, new EntityAIAttackRanged(this, 1.25D, 50, 5.0F));
 		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(4, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1,
-				new EntityAINearestAttackableTarget(this, EntityPlayer.class, 10, true, false, null));
+				new EntityAINearestAttackableTarget(this, EntityPlayer.class, 10, false, false, NO_BAD_ENTITY));
+	}
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender() {
+		return 15728880;
 	}
 
 	@Override
@@ -100,25 +115,41 @@ public class EntitySquiddyAttackers extends EntityMob implements IRangedAttackMo
 		}
 	}
 
-	@Nullable
+/*	@Nullable
 	protected ResourceLocation getLootTable() {
 		return LootTableList.ENTITIES_SNOWMAN;
+	}
+*/
+	private void launchWitherSkullToEntity(int p_82216_1_, EntityLivingBase p_82216_2_) {
+		this.launchWitherSkullToCoords(p_82216_1_, p_82216_2_.posX,
+				p_82216_2_.posY + (double) p_82216_2_.getEyeHeight() * 0.5D, p_82216_2_.posZ,
+				p_82216_1_ == 0 && this.rand.nextFloat() < 0.001F);
+	}
+
+	/**
+	 * Launches a Wither skull toward (par2, par4, par6)
+	 */
+	private void launchWitherSkullToCoords(int p_82209_1_, double x, double y, double z, boolean invulnerable) {
+		double d0 = this.posX;
+		double d1 = this.posY;
+		double d2 = this.posZ;
+		double d3 = x - d0;
+		double d4 = y - d1;
+		double d5 = z - d2;
+		EntitySteamStream entitywitherskull = new EntitySteamStream(this.world, this, d3, d4, d5);
+
+		entitywitherskull.posY = d1;
+		entitywitherskull.posX = d0;
+		entitywitherskull.posZ = d2;
+		this.world.spawnEntity(entitywitherskull);
 	}
 
 	/**
 	 * Attack the specified entity using a ranged attack.
 	 */
+	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
-		EntitySteamStream entitySteamStream = new EntitySteamStream(this.world, this);
-		double d0 = target.posY + (double) target.getEyeHeight() - 1.100000023841858D;
-		double d1 = target.posX - this.posX;
-		double d2 = d0 - entitySteamStream.posY;
-		double d3 = target.posZ - this.posZ;
-		float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
-		entitySteamStream.shoot(d1, d2 + (double) f, d3, 1.6F, 12.0F);
-		this.playSound(SoundEvents.ENTITY_SNOWMAN_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-		this.world.spawnEntity(entitySteamStream);
-
+		this.launchWitherSkullToEntity(0, target);
 	}
 
 	public float getEyeHeight() {
