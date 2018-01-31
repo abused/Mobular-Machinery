@@ -16,6 +16,7 @@ tile.extruder_tap.name=Regional Extruder Tap
 tile.extruder_inventory.name=Regional Extruder Inventory Interface
 tile.energy_relay.name=Energy Relay
 tile.block_gear.name=Gear Block WIP
+tile.display_pedestal.name=Display Pedestal
 
 entity.MechanicalChicken.name=Mechanical Chicken
 entity.MechanicalOctopus.name=Mechanical Octopus

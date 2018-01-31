@@ -20,6 +20,7 @@ import teamrapture.mobularmachinery.blocks.extruder.ExtruderTap;
 import teamrapture.mobularmachinery.blocks.extruder.RegionalExtruder;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCell;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCore;
+import teamrapture.mobularmachinery.client.render.RenderDisplayPededstal;
 import teamrapture.mobularmachinery.client.render.RenderPhotonCore;
 import teamrapture.mobularmachinery.client.render.RenderRegionalExtruder;
 import teamrapture.mobularmachinery.items.ItemBase;
@@ -53,6 +54,7 @@ public class ModResources {
 	public static Block blockExtruderInventory = new ExtruderInventory();
 	public static Block blockEnergyRelay = new EnergyRelay();
 	public static Block blockGear = new GearBlock();
+	public static Block blockDisplayPedestal = new DisplayPedestal();
 
 	public static Fluid steam = new FluidSteam();
 	public static FluidBlock steam_block;
@@ -75,6 +77,7 @@ public class ModResources {
 		reg(blockExtruderInventory);
 		reg(blockEnergyRelay);
 		reg(blockGear);
+		reg(blockDisplayPedestal);
 
 		FluidRegistry.registerFluid(steam);
 		FluidRegistry.addBucketForFluid(steam);
@@ -102,6 +105,7 @@ public class ModResources {
 		regRender(blockExtruderInventory);
 		regRender(blockEnergyRelay);
 		regRender(blockGear);
+		regRender(blockDisplayPedestal);
 
 		steam_block.regFluid();
 	}
@@ -121,6 +125,7 @@ public class ModResources {
 	public static void registerTESR() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhotonCore.class, new RenderPhotonCore());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRegionalExtruder.class, new RenderRegionalExtruder());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDisplayPedestal.class, new RenderDisplayPededstal());
 	}
 
 	public static void regRender(Object object) {

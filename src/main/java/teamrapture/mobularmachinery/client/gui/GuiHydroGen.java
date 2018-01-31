@@ -66,7 +66,7 @@ public class GuiHydroGen extends GuiContainer {
 
         if (this.isPointInRegion(32, 15, 14, 50, mouseX, mouseY)) {
             List<String> energy = new ArrayList<String>();
-            energy.add(tile.storage.getEnergyStored() + " / " + tile.storage.getMaxEnergyStored() + "  FU");
+            energy.add(tile.storage.getEnergyStored() + " / " + tile.storage.getMaxEnergyStored() + "  FE");
             GuiUtils.drawHoveringText(energy, mouseX, mouseY, mc.displayWidth, mc.displayHeight, -1, mc.fontRenderer);
         }
 

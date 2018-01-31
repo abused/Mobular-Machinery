@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "mobularmachinery:display_pedestal" },
+		"inventory": { "model": "mobularmachinery:display_pedestal" }
+    }
+}

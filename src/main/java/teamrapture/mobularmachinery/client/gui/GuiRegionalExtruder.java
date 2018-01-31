@@ -49,7 +49,7 @@ public class GuiRegionalExtruder extends GuiContainer {
 
         if (this.isPointInRegion(9, 9, 50, 14, mouseX, mouseY)) {
             List<String> energy = new ArrayList<String>();
-            energy.add(tile.storage.getEnergyStored() + " / " + tile.storage.getMaxEnergyStored() + "  FU");
+            energy.add(tile.storage.getEnergyStored() + " / " + tile.storage.getMaxEnergyStored() + "  FE");
             GuiUtils.drawHoveringText(energy, mouseX, mouseY, mc.displayWidth, mc.displayHeight, -1, mc.fontRenderer);
         }
 
