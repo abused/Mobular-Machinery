@@ -34,8 +34,9 @@ public class ModResources {
 	public static Item itemGear = new ItemBase("item_gear");
 	public static Item itemMechanizedEgg = new ItemBase("item_mechanized_egg");
 	public static Item itemBossHeart = new ItemBase("item_boss_heart");
-	public static Item itemDummyEntityOctoThrowable = new ItemBase("octo");
+
 	public static Item itemSteamDummyItem = new ItemBase("steam");
+	public static Item itemCoil = new ItemBase("item_coil");
 	public static Item itemLinker = new ItemLinker();
 
 	public static Item itemManual = new ItemManual();
@@ -61,7 +62,7 @@ public class ModResources {
 		reg(itemBossHeart);
 		reg(itemManual);
 		reg(itemLinker);
-		reg(itemDummyEntityOctoThrowable);
+	
 		reg(blockHydroGen);
 		reg(blockPhotonCore);
 		reg(blockPhotonCell);
@@ -86,7 +87,7 @@ public class ModResources {
 		regRender(itemSteamDummyItem);
 		regRender(itemMechanizedEgg);
 		regRender(itemBossHeart);
-		regRender(itemDummyEntityOctoThrowable);
+	
 		regRender(itemManual);
 		regRender(blockPhotonCore);
 		regRender(blockPhotonCell);

@@ -22,6 +22,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
@@ -34,6 +35,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import teamrapture.mobularmachinery.entity.nonliving.EntitySteamStream;
+import teamrapture.mobularmachinery.registry.ModResources;
 
 public class EntitySquiddyAttackers extends EntityMob implements IRangedAttackMob, IAnimatedEntity {
 	public Animation ATTACK_ANIMATION;
@@ -198,5 +200,22 @@ public class EntitySquiddyAttackers extends EntityMob implements IRangedAttackMo
 	public void setAnimation(Animation animation) {
 		currentAnim = animation;
 	}
+	//TODO -----------------------------------------------------------------------------------------------------
+		//TODO THIS IS WHERE THE LIST ? / ARRAY will be called for dropping types of items in random chance
+		@Override
+		public boolean hitByEntity(Entity entityIn)
+		{
+			if (!this.world.isRemote) {
+				if(rand.nextDouble() < 1.0D) this.entityDropItem(new ItemStack(ModResources.itemGear, 1 + rand.nextInt(3)), 0.2F);
+			}
+			return false;
+		}
 
+		@Override
+		public void onDeath(DamageSource cause) {
+			if (!this.world.isRemote) {
+				this.entityDropItem(new ItemStack(ModResources.itemCoil, rand.nextInt(5)), 0.2F);
+			}
+			super.onDeath(cause);
+		}
 }

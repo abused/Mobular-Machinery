@@ -11,11 +11,15 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import teamrapture.mobularmachinery.client.render.RenderMechOctopusBoss;
 import teamrapture.mobularmachinery.client.render.RenderMechanicalChicken;
+import teamrapture.mobularmachinery.client.render.RenderMechanicalGhast;
+import teamrapture.mobularmachinery.client.render.RenderMechanicalZombie;
 import teamrapture.mobularmachinery.client.render.RenderSquiddyAttacker;
 import teamrapture.mobularmachinery.client.render.RenderSquiddyAttackers;
 import teamrapture.mobularmachinery.client.render.RenderSteamStream;
 import teamrapture.mobularmachinery.entity.boss.EntityMechOctopusBoss;
 import teamrapture.mobularmachinery.entity.friendly.EntityMechanicalChicken;
+import teamrapture.mobularmachinery.entity.monster.EntityMechanicalGhast;
+import teamrapture.mobularmachinery.entity.monster.EntityMechanicalZombie;
 import teamrapture.mobularmachinery.entity.monster.EntitySquiddyAttacker;
 import teamrapture.mobularmachinery.entity.monster.EntitySquiddyAttackers;
 import teamrapture.mobularmachinery.entity.nonliving.EntitySteamStream;
@@ -41,6 +45,9 @@ public class ClientProxy extends CommonProxy {
 		rm.entityRenderMap.put(EntitySquiddyAttacker.class, new RenderSquiddyAttacker(rm));
 		rm.entityRenderMap.put(EntitySteamStream.class, new RenderSteamStream(rm, ModResources.itemSteamDummyItem));
 		rm.entityRenderMap.put(EntitySquiddyAttackers.class, new RenderSquiddyAttackers(rm));
+		rm.entityRenderMap.put(EntityMechanicalGhast.class, new RenderMechanicalGhast(rm));
+		rm.entityRenderMap.put(EntityMechanicalZombie.class, new RenderMechanicalZombie(rm));
+		
 
 	}
 
