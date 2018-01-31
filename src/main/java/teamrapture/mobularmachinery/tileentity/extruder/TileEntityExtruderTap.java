@@ -15,9 +15,20 @@ public class TileEntityExtruderTap extends TileEntityBase {
 
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        if(capability == CapabilityEnergy.ENERGY) {
+        TileEntityRegionalExtruder extruder = null;
+        BlockPos extruderPos = null;
+        for (EnumFacing side : EnumFacing.VALUES) {
+            BlockPos cip = pos.offset(side);
+            if(world.getTileEntity(cip) instanceof TileEntityRegionalExtruder) {
+                extruder = (TileEntityRegionalExtruder) world.getTileEntity(cip);
+                extruderPos = cip;
+            }
+        }
+
+        if(capability == CapabilityEnergy.ENERGY && extruder != null && extruder.isMultiblock && extruderPos != null) {
             return true;
         }
+
         return super.hasCapability(capability, facing);
     }
 
