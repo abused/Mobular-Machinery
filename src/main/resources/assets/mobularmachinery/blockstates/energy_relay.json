@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "mobularmachinery:energy_relay" },
+		"inventory": { "model": "mobularmachinery:energy_relay" }
+    }
+}

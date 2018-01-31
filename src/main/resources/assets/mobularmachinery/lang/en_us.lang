@@ -4,6 +4,7 @@ item.item_gear.name=Gear
 item.item_mechanized_egg.name=Mechanized Egg
 item.item_boss_heart.name=Boss Heart
 item.item_mobular_manual.name=Mobular Manual
+item.item_linker.name=Linker Tool
 
 tile.hydroelectric_generator.name=Hydroelectric Generator
 tile.photon_core.name=Photon Core
@@ -13,6 +14,7 @@ tile.regional_extruder.name=Regional Extruder Core
 tile.extruder_frame.name=Regional Extruder Frame
 tile.extruder_tap.name=Regional Extruder Tap
 tile.extruder_inventory.name=Regional Extruder Inventory Interface
+tile.energy_relay.name=Energy Relay
 tile.block_gear.name=Gear Block
 
 entity.MechanicalChicken.name=Mechanical Chicken

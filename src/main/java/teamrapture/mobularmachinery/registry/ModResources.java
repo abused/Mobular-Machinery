@@ -11,10 +11,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import teamrapture.mobularmachinery.blocks.FluidSteam;
-import teamrapture.mobularmachinery.blocks.GearBlock;
-import teamrapture.mobularmachinery.blocks.HydroGen;
-import teamrapture.mobularmachinery.blocks.WaterVaporizer;
+import teamrapture.mobularmachinery.blocks.*;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderFrame;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderInventory;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderTap;
@@ -24,11 +21,9 @@ import teamrapture.mobularmachinery.blocks.photon.PhotonCore;
 import teamrapture.mobularmachinery.client.render.RenderPhotonCore;
 import teamrapture.mobularmachinery.client.render.RenderRegionalExtruder;
 import teamrapture.mobularmachinery.items.ItemBase;
+import teamrapture.mobularmachinery.items.ItemLinker;
 import teamrapture.mobularmachinery.items.ItemManual;
-import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
-import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCell;
-import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCore;
-import teamrapture.mobularmachinery.tileentity.TileEntityWaterVaporizer;
+import teamrapture.mobularmachinery.tileentity.*;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderInventory;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderTap;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityRegionalExtruder;
@@ -41,7 +36,8 @@ public class ModResources {
 	public static Item itemBossHeart = new ItemBase("item_boss_heart");
 	public static Item itemDummyEntityOctoThrowable = new ItemBase("octo");
 	public static Item itemSteamDummyItem = new ItemBase("steam");
-	
+	public static Item itemLinker = new ItemLinker();
+
 	public static Item itemManual = new ItemManual();
 
 	public static Block blockHydroGen = new HydroGen();
@@ -52,6 +48,7 @@ public class ModResources {
 	public static Block blockExtruderFrame = new ExtruderFrame();
 	public static Block blockExtruderTap = new ExtruderTap();
 	public static Block blockExtruderInventory = new ExtruderInventory();
+	public static Block blockEnergyRelay = new EnergyRelay();
 	public static Block blockGear = new GearBlock();
 
 	public static Fluid steam = new FluidSteam();
@@ -63,6 +60,7 @@ public class ModResources {
 		reg(itemSteamDummyItem);
 		reg(itemBossHeart);
 		reg(itemManual);
+		reg(itemLinker);
 		reg(itemDummyEntityOctoThrowable);
 		reg(blockHydroGen);
 		reg(blockPhotonCore);
@@ -72,6 +70,7 @@ public class ModResources {
 		reg(blockExtruderFrame);
 		reg(blockExtruderTap);
 		reg(blockExtruderInventory);
+		reg(blockEnergyRelay);
 		reg(blockGear);
 
 		FluidRegistry.registerFluid(steam);
@@ -83,6 +82,7 @@ public class ModResources {
 
 	public static void registerRenders() {
 		regRender(itemGear);
+		regRender(itemLinker);
 		regRender(itemSteamDummyItem);
 		regRender(itemMechanizedEgg);
 		regRender(itemBossHeart);
@@ -96,6 +96,7 @@ public class ModResources {
 		regRender(blockExtruderFrame);
 		regRender(blockExtruderTap);
 		regRender(blockExtruderInventory);
+		regRender(blockEnergyRelay);
 		regRender(blockGear);
 
 		steam_block.regFluid();
@@ -109,6 +110,7 @@ public class ModResources {
 		GameRegistry.registerTileEntity(TileEntityRegionalExtruder.class, "tile_regional_extruder");
 		GameRegistry.registerTileEntity(TileEntityExtruderTap.class, "tile_extruder_tap");
 		GameRegistry.registerTileEntity(TileEntityExtruderInventory.class, "tile_extruder_inventory");
+		GameRegistry.registerTileEntity(TileEntityEnergyRelay.class, "tile_energy_relay");
 	}
 
 	public static void registerTESR() {
