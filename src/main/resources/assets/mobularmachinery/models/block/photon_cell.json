@@ -1,8 +1,10 @@
 {
     "parent": "block/cube_all",
     "textures": {
-		"particle": "blocks/glass_black",
-        "0": "blocks/glass_black"
+		"particle": "mobularmachinery:blocks/solar_top",
+        "0": "mobularmachinery:blocks/solar_side",
+        "1": "mobularmachinery:blocks/solar_top",
+        "2": "blocks/glass_blue"
     },
     "elements": [
         {
@@ -10,25 +12,25 @@
             "from": [ 0.0, 0.0, 0.0 ], 
             "to": [ 16.0, 4.0, 16.0 ], 
             "faces": {
-                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 4.0 ] },
-                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 4.0 ] },
-                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 4.0 ] },
-                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 4.0 ] },
-                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 6.0 ] },
+                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 6.0 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 6.0 ] },
+                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 6.0 ] },
+                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
                 "down": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
             }
         },
         {
             "name": "Cube",
             "from": [ 0.0, 11.0, 0.0 ], 
-            "to": [ 16.0, 12.0, 16.0 ], 
+            "to": [ 16.0, 13.0, 16.0 ], 
             "faces": {
-                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
-                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
-                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
-                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
-                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
-                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+                "north": { "texture": "#2", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "east": { "texture": "#2", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "south": { "texture": "#2", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "west": { "texture": "#2", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "up": { "texture": "#2", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "#2", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
             }
         }
     ]
