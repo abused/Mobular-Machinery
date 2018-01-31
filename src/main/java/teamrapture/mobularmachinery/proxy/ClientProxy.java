@@ -28,8 +28,6 @@ import teamrapture.mobularmachinery.registry.ModResources;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
-	private static final Minecraft MC = Minecraft.getMinecraft();
-
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
