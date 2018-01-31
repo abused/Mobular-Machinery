@@ -1,11 +1,8 @@
 package teamrapture.mobularmachinery.entity.boss;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
@@ -19,7 +16,6 @@ import net.minecraft.entity.ai.EntityAIAttackRanged;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.item.EntityItem;
@@ -30,13 +26,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -189,18 +183,18 @@ public class EntityMechOctopusBoss extends EntityMob implements IAnimatedEntity,
 		 * this.world.getGameRules().getBoolean("mobGriefing"));
 		 * //this.world.playBroadcastSound(1023, new BlockPos(this), 0);
 		 */
-		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
-				this.posZ, 0.0D, 0.0456D, 0.0D);
-		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
-				this.posZ , 0.0D, 0.055D, 0.0D);
-		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
-				this.posZ , 0.0D, 0.045D, 0.0D);
-		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
-				this.posZ , 0.0D, 0.035D, 0.0D);
-		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
-				this.posZ , 0.0D, 0.05D, 0.0D);
-		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY+ MathHelper.sin(1.223F),
-				this.posZ , 0.0D, 0.04D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY + MathHelper.sin(1.223F), this.posZ,
+				0.0D, 0.0456D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY + MathHelper.sin(1.223F), this.posZ,
+				0.0D, 0.055D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY + MathHelper.sin(1.223F), this.posZ,
+				0.0D, 0.045D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY + MathHelper.sin(1.223F), this.posZ,
+				0.0D, 0.035D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY + MathHelper.sin(1.223F), this.posZ,
+				0.0D, 0.05D, 0.0D);
+		this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY + MathHelper.sin(1.223F), this.posZ,
+				0.0D, 0.04D, 0.0D);
 
 		{
 			super.updateAITasks();
