@@ -29,17 +29,6 @@ public class EnergyRelay extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        TileEntityEnergyRelay te = (TileEntityEnergyRelay) world.getTileEntity(pos);
-        if(te.isLinked()) {
-            if(!world.isRemote) {
-                player.sendMessage(new TextComponentString("The tile is linked with a storage of: " + te.storage.getEnergyStored()));
-            }
-        }
-        return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
-    }
-
-    @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }

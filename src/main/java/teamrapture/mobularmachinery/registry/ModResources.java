@@ -11,6 +11,8 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import teamrapture.mobularmachinery.blocks.*;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderFrame;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderInventory;
@@ -114,6 +116,7 @@ public class ModResources {
 		GameRegistry.registerTileEntity(TileEntityEnergyRelay.class, "tile_energy_relay");
 	}
 
+	@SideOnly(Side.CLIENT)
 	public static void registerTESR() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhotonCore.class, new RenderPhotonCore());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRegionalExtruder.class, new RenderRegionalExtruder());
