@@ -507,30 +507,29 @@ public class EntityMechanicalZombie extends EntityMob {
 	 * Called when the mob's health reaches 0.
 	 */
 	public void onDeath(DamageSource cause) {
-		super.onDeath(cause);
-
-		if (cause.getTrueSource() instanceof EntityCreeper) {
-			EntityCreeper entitycreeper = (EntityCreeper) cause.getTrueSource();
-
-			if (entitycreeper.getPowered() && entitycreeper.ableToCauseSkullDrop()) {
-				entitycreeper.incrementDroppedSkulls();
-				ItemStack itemstack = this.getSkullDrop();
-
-				if (!itemstack.isEmpty()) {
-					this.entityDropItem(itemstack, 0.0F);
-				}
-			}
-		}else if (!this.world.isRemote) {
+		if (!this.world.isRemote) {
 			this.entityDropItem(new ItemStack(ModResources.itemCoil, rand.nextInt(5)), 0.2F);
 		}
 		super.onDeath(cause);
 	}
-	
 
-	protected ItemStack getSkullDrop() {
-		return new ItemStack(Items.SKULL, 1, 2);
-	}
-
+	// super.onDeath(cause);
+	/*
+	 * if (cause.getTrueSource() instanceof EntityCreeper) { EntityCreeper
+	 * entitycreeper = (EntityCreeper) cause.getTrueSource();
+	 * 
+	 * if (entitycreeper.getPowered() && entitycreeper.ableToCauseSkullDrop()) {
+	 * entitycreeper.incrementDroppedSkulls(); ItemStack itemstack =
+	 * this.getSkullDrop();
+	 * 
+	 * if (!itemstack.isEmpty()) { this.entityDropItem(itemstack, 0.0F); } }
+	 * }else
+	 *
+	 * }
+	 * 
+	 * /* protected ItemStack getSkullDrop() { return new ItemStack(Items.SKULL,
+	 * 1, 2); }
+	 */
 	class GroupData implements IEntityLivingData {
 		public boolean isChild;
 
@@ -552,5 +551,4 @@ public class EntityMechanicalZombie extends EntityMob {
 		return false;
 	}
 
-	
 }

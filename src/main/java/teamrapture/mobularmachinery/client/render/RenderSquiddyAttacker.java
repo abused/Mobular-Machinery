@@ -7,14 +7,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import teamrapture.mobularmachinery.Info;
-import teamrapture.mobularmachinery.client.model.ModelMechOctopusBoss;
+import teamrapture.mobularmachinery.client.model.ModelMechOctoBossLauncher;
 import teamrapture.mobularmachinery.entity.monster.EntitySquiddyAttacker;
 
 @SideOnly(Side.CLIENT)
 public class RenderSquiddyAttacker extends Render<EntitySquiddyAttacker> {
 	private static final ResourceLocation Octo_TEXTURES = new ResourceLocation(Info.MODID, "textures/entity/octo_boss.png");
 
-	private final ModelMechOctopusBoss modelMechOctopusBoss = new ModelMechOctopusBoss();
+	private final ModelMechOctoBossLauncher modelMechOctopusBoss = new ModelMechOctoBossLauncher();
 
 	public RenderSquiddyAttacker(RenderManager renderManagerIn) {
 		super(renderManagerIn);

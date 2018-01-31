@@ -398,7 +398,7 @@ public class EntityMechanicalGhast extends EntityFlying implements IMob {
 	public boolean hitByEntity(Entity entityIn)
 	{
 		if (!this.world.isRemote) {
-			if(rand.nextDouble() < 1.0D) this.entityDropItem(new ItemStack(ModResources.itemGear, 1 + rand.nextInt(3)), 0.2F);
+			if(rand.nextDouble() < 1.0D) this.entityDropItem(new ItemStack(ModResources.itemGear, 1 + rand.nextInt(1)), 0.2F);
 		}
 		return false;
 	}
@@ -406,7 +406,7 @@ public class EntityMechanicalGhast extends EntityFlying implements IMob {
 	@Override
 	public void onDeath(DamageSource cause) {
 		if (!this.world.isRemote) {
-			this.entityDropItem(new ItemStack(ModResources.itemCoil, rand.nextInt(5)), 0.2F);
+			this.entityDropItem(new ItemStack(ModResources.itemCoil, rand.nextInt(2)), 0.2F);
 		}
 		super.onDeath(cause);
 	}

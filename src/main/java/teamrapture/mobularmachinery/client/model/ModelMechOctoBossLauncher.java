@@ -4,14 +4,10 @@ import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
-import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import teamrapture.mobularmachinery.entity.boss.EntityMechOctopusBoss;
 
-/**
- * Octipi - Thundercat Created using Tabula 7.0.0
- */
-public class ModelMechOctopusBoss extends AdvancedModelBase {
+public class ModelMechOctoBossLauncher  extends AdvancedModelBase {
 	public AdvancedModelRenderer Head;
 	public AdvancedModelRenderer eyeRight;
 	public AdvancedModelRenderer eyeLeft;
@@ -270,7 +266,7 @@ public class ModelMechOctopusBoss extends AdvancedModelBase {
 	public AdvancedModelRenderer tentOneBase_175;
 	private ModelAnimator animation;
 
-	public ModelMechOctopusBoss() {
+	public ModelMechOctoBossLauncher() {
 		animation = ModelAnimator.create();
 		this.textureWidth = 128;
 		this.textureHeight = 128;
@@ -1515,7 +1511,7 @@ public class ModelMechOctopusBoss extends AdvancedModelBase {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
+	//	animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 		this.Head.render(f5);
 	}
 

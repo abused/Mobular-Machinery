@@ -64,7 +64,7 @@ public class ModResources {
 		reg(itemBossHeart);
 		reg(itemManual);
 		reg(itemLinker);
-	
+		reg(itemCoil);
 		reg(blockHydroGen);
 		reg(blockPhotonCore);
 		reg(blockPhotonCell);
@@ -89,7 +89,8 @@ public class ModResources {
 		regRender(itemSteamDummyItem);
 		regRender(itemMechanizedEgg);
 		regRender(itemBossHeart);
-	
+
+		regRender(itemCoil);
 		regRender(itemManual);
 		regRender(blockPhotonCore);
 		regRender(blockPhotonCell);
