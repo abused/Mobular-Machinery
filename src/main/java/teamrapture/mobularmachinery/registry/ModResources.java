@@ -21,7 +21,8 @@ import teamrapture.mobularmachinery.blocks.extruder.ExtruderTap;
 import teamrapture.mobularmachinery.blocks.extruder.RegionalExtruder;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCell;
 import teamrapture.mobularmachinery.blocks.photon.PhotonCore;
-import teamrapture.mobularmachinery.client.render.PhotonCoreRender;
+import teamrapture.mobularmachinery.client.render.RenderPhotonCore;
+import teamrapture.mobularmachinery.client.render.RenderRegionalExtruder;
 import teamrapture.mobularmachinery.items.ItemBase;
 import teamrapture.mobularmachinery.items.ItemManual;
 import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
@@ -111,7 +112,8 @@ public class ModResources {
 	}
 
 	public static void registerTESR() {
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhotonCore.class, new PhotonCoreRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhotonCore.class, new RenderPhotonCore());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRegionalExtruder.class, new RenderRegionalExtruder());
 	}
 
 	public static void regRender(Object object) {

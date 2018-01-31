@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCore;
 import teamrapture.mobularmachinery.utils.hud.HudRender;
 
-public class PhotonCoreRender extends TileEntitySpecialRenderer<TileEntityPhotonCore> {
+public class RenderPhotonCore extends TileEntitySpecialRenderer<TileEntityPhotonCore> {
 
     @Override
     public void render(TileEntityPhotonCore te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {

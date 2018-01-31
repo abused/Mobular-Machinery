@@ -7,6 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import teamrapture.mobularmachinery.client.gui.slots.SlotInput;
 import teamrapture.mobularmachinery.client.gui.slots.SlotOutput;
+import teamrapture.mobularmachinery.registry.ModResources;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityRegionalExtruder;
 
 public class ContainerRegionalExtruder extends Container {
@@ -59,6 +60,14 @@ public class ContainerRegionalExtruder extends Container {
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
+            }
+
+            if(index != 0) {
+                //if(itemstack1.getItem() == ModResources.itemBossHeart) {
+                    if(!this.mergeItemStack(itemstack1, 0, 1, true)) {
+                        return ItemStack.EMPTY;
+                    }
+                //}
             }
 
             if (itemstack1.isEmpty())
