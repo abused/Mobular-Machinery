@@ -31,6 +31,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
+import teamrapture.mobularmachinery.entity.DropList;
 import teamrapture.mobularmachinery.registry.ModResources;
 
 public class EntityMechanicalChicken extends EntityMob implements IRangedAttackMob {
@@ -40,8 +41,11 @@ public class EntityMechanicalChicken extends EntityMob implements IRangedAttackM
 	public float oFlapSpeed;
 	public float oFlap;
 	public float wingRotDelta = 1.0F;
-	/** The time until the next egg is spawned. */
+	/**
+	 * The time until the next egg is spawned.
+	 */
 	public int timeUntilNextMechEgg;
+	public DropList list = new DropList();
 
 	public EntityMechanicalChicken(World worldIn) {
 		super(worldIn);
@@ -191,23 +195,22 @@ public class EntityMechanicalChicken extends EntityMob implements IRangedAttackM
 	@Override
 	public void setSwingingArms(boolean swingingArms) {
 	}
-	//TODO -----------------------------------------------------------------------------------------------------
-		//TODO THIS IS WHERE THE LIST ? / ARRAY will be called for dropping types of items in random chance
-		@Override
-		public boolean hitByEntity(Entity entityIn)
-		{
-			if (!this.world.isRemote) {
-				if(rand.nextDouble() < 1.0D) this.entityDropItem((list.generateRandomItem(), 1 + rand.nextInt(1)), 0.2F);
-			}
-			return false;
-		}
 
-		@Override
-		public void onDeath(DamageSource cause) {
-			if (!this.world.isRemote) {
-				this.entityDropItem(new ItemStack(ModResources.itemCoil, rand.nextInt(2)), 0.2F);
-			}
-			super.onDeath(cause);
+	//TODO -----------------------------------------------------------------------------------------------------
+	//TODO THIS IS WHERE THE LIST ? / ARRAY will be called for dropping types of items in random chance
+	@Override
+	public boolean hitByEntity(Entity entityIn) {
+		if (!this.world.isRemote) {
+			if (rand.nextDouble() < 1.0D) this.entityDropItem(list.generateRandomItem(), 1 + rand.nextInt(1));
 		}
+		return false;
+	}
+
+	@Override
+	public void onDeath(DamageSource cause) {
+		if (!this.world.isRemote) {
+			this.entityDropItem(new ItemStack(list.generateRandomItem().getItem(), rand.nextInt(2)), 0.2F);
+		}
+		super.onDeath(cause);
 	}
 }

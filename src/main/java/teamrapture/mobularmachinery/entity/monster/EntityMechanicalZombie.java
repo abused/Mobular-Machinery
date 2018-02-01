@@ -56,6 +56,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import teamrapture.mobularmachinery.entity.DropList;
 import teamrapture.mobularmachinery.registry.ModResources;
 
 public class EntityMechanicalZombie extends EntityMob {
@@ -70,10 +71,7 @@ public class EntityMechanicalZombie extends EntityMob {
 			"Baby speed boost", 0.5D, 1);
 	private static final DataParameter<Boolean> IS_CHILD = EntityDataManager
 			.<Boolean>createKey(EntityMechanicalZombie.class, DataSerializers.BOOLEAN);
-	/**
-	 * Was the type of villager for zombie villagers prior to 1.11. Now unused.
-	 * Use {@link EntityMechanicalZombieVillager#PROFESSION} instead.
-	 */
+
 	private static final DataParameter<Integer> VILLAGER_TYPE = EntityDataManager
 			.<Integer>createKey(EntityMechanicalZombie.class, DataSerializers.VARINT);
 	private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager
@@ -84,6 +82,7 @@ public class EntityMechanicalZombie extends EntityMob {
 	private float zombieWidth = -1.0F;
 	/** The height of the the entity. */
 	private float zombieHeight;
+	public DropList list = new DropList();
 
 	public EntityMechanicalZombie(World worldIn) {
 		super(worldIn);
@@ -546,7 +545,7 @@ public class EntityMechanicalZombie extends EntityMob {
 	public boolean hitByEntity(Entity entityIn) {
 		if (!this.world.isRemote) {
 			if (rand.nextDouble() < 1.0D)
-				this.entityDropItem(new ItemStack(ModResources.itemGear, 1 + rand.nextInt(3)), 0.2F);
+				this.entityDropItem(new ItemStack(list.generateRandomItem().getItem(), 1 + rand.nextInt(3)), 0.2F);
 		}
 		return false;
 	}

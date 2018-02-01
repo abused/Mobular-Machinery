@@ -398,7 +398,7 @@ public class EntityMechanicalGhast extends EntityFlying implements IMob {
 	public boolean hitByEntity(Entity entityIn)
 	{
 		if (!this.world.isRemote) {
-			if(rand.nextDouble() < 1.0D) this.entityDropItem((list.generateRandomItem(), 1 + rand.nextInt(1)), 0.2F);
+			if(rand.nextDouble() < 1.0D) this.entityDropItem(list.generateRandomItem(), 1 + rand.nextInt(1));
 		}
 		return false;
 	}
