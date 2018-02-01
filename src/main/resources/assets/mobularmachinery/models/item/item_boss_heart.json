@@ -1,12 +1,10 @@
 {
-
-	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
 	"textures": {
-		"0": "mobularmachinery:textures/items/coloring1",
-		"1": "mobularmachinery:textures/items/greencoloring",
-		"2": "mobularmachinery:textures/items/coppercoloring",
-		"3": "mobularmachinery:textures/items/goldencoloring",
-		"particle": "mobularmachinery:textures/items/coloring1"
+		"0": "mobularmachinery:items/coloring1",
+		"1": "mobularmachinery:items/greencoloring",
+		"2": "mobularmachinery:items/coppercoloring",
+		"3": "mobularmachinery:items/goldencoloring",
+		"particle": "mobularmachinery:items/coloring1"
 
 	},
 	"elements": [

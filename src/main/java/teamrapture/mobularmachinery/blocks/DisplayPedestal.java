@@ -30,10 +30,10 @@ public class DisplayPedestal extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack heldItem = player.getHeldItem(hand);
-        final TileEntityDisplayPedestal te = (TileEntityDisplayPedestal) world.getTileEntity(pos);
+        TileEntityDisplayPedestal te = (TileEntityDisplayPedestal) world.getTileEntity(pos);
 
         if(heldItem != ItemStack.EMPTY) {
-            if(te.stack.isEmpty()) {
+            if(te.stack == ItemStack.EMPTY) {
                 te.stack = heldItem;
                 if(player.getHeldItem(hand).getCount() > 1) {
                     player.getHeldItem(hand).shrink(1);
