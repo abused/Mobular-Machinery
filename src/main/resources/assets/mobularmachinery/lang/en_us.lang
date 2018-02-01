@@ -1,10 +1,14 @@
 itemGroup.MobularTab=Mobular Machinery
 
 item.item_gear.name=Gear
+
+item.item_coil.name=Coil
 item.item_mechanized_egg.name=Mechanized Egg
 item.item_boss_heart.name=Boss Heart
 item.item_mobular_manual.name=Mobular Manual WIP
 item.item_linker.name=Linker Tool
+item.fluid_steam=Steam
+
 
 tile.hydroelectric_generator.name=Hydroelectric Generator
 tile.photon_core.name=Photon Core

@@ -39,13 +39,13 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import teamrapture.mobularmachinery.entity.DropList;
 import teamrapture.mobularmachinery.entity.nonliving.EntitySteamStream;
 import teamrapture.mobularmachinery.registry.ModResources;
 
 public class EntityMechanicalGhast extends EntityFlying implements IMob {
 	
-	 private static final Set<Item> DropItems = Sets.newHashSet(ModResources.itemGear, ModResources.itemCoil);
-	   
+	public DropList list = new DropList();
 	private static final DataParameter<Boolean> ATTACKING = EntityDataManager
 			.<Boolean>createKey(EntityMechanicalGhast.class, DataSerializers.BOOLEAN);
 	/** The explosion radius of spawned fireballs. */
@@ -398,7 +398,7 @@ public class EntityMechanicalGhast extends EntityFlying implements IMob {
 	public boolean hitByEntity(Entity entityIn)
 	{
 		if (!this.world.isRemote) {
-			if(rand.nextDouble() < 1.0D) this.entityDropItem(new ItemStack(ModResources.itemGear, 1 + rand.nextInt(1)), 0.2F);
+			if(rand.nextDouble() < 1.0D) this.entityDropItem((list.generateRandomItem(), 1 + rand.nextInt(1)), 0.2F);
 		}
 		return false;
 	}
