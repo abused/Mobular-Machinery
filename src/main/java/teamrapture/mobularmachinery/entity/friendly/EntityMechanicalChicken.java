@@ -16,9 +16,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,6 +29,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
+import teamrapture.mobularmachinery.entity.nonliving.EntityMechEgg;
 import teamrapture.mobularmachinery.registry.ModResources;
 
 public class EntityMechanicalChicken extends EntityMob implements IRangedAttackMob {
@@ -155,7 +154,7 @@ public class EntityMechanicalChicken extends EntityMob implements IRangedAttackM
 	 */
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
-		EntitySnowball entitymechEgg = new EntitySnowball(this.world, this);
+		EntityMechEgg entitymechEgg = new EntityMechEgg(this.world, this);
 		double d0 = target.posY + (double) target.getEyeHeight() - 1.100000023841858D;
 		double d1 = target.posX - this.posX;
 		double d2 = d0 - entitymechEgg.posY;
