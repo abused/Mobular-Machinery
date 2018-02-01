@@ -3,6 +3,7 @@ package teamrapture.mobularmachinery.entity.friendly;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
@@ -19,6 +20,7 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
@@ -189,5 +191,23 @@ public class EntityMechanicalChicken extends EntityMob implements IRangedAttackM
 	@Override
 	public void setSwingingArms(boolean swingingArms) {
 	}
+	//TODO -----------------------------------------------------------------------------------------------------
+		//TODO THIS IS WHERE THE LIST ? / ARRAY will be called for dropping types of items in random chance
+		@Override
+		public boolean hitByEntity(Entity entityIn)
+		{
+			if (!this.world.isRemote) {
+				if(rand.nextDouble() < 1.0D) this.entityDropItem((list.generateRandomItem(), 1 + rand.nextInt(1)), 0.2F);
+			}
+			return false;
+		}
 
+		@Override
+		public void onDeath(DamageSource cause) {
+			if (!this.world.isRemote) {
+				this.entityDropItem(new ItemStack(ModResources.itemCoil, rand.nextInt(2)), 0.2F);
+			}
+			super.onDeath(cause);
+		}
+	}
 }
