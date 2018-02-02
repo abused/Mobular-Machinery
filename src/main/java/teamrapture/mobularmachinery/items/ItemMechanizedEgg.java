@@ -1,6 +1,5 @@
 package teamrapture.mobularmachinery.items;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.init.SoundEvents;
@@ -14,12 +13,14 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import teamrapture.mobularmachinery.MobularMachinery;
 
-public class ItemMechanizedEgg extends Item{
+public class ItemMechanizedEgg extends Item {
 
 	public ItemMechanizedEgg()
     {
         this.maxStackSize = 16;
         this.setCreativeTab(MobularMachinery.mobularTab);
+        this.setRegistryName("item_mechanized_egg");
+        this.setUnlocalizedName("item_mechanized_egg");
     }
 
     /**

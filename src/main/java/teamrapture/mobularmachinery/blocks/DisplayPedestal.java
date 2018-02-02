@@ -33,18 +33,23 @@ public class DisplayPedestal extends BlockContainer {
         TileEntityDisplayPedestal te = (TileEntityDisplayPedestal) world.getTileEntity(pos);
 
         if(heldItem != ItemStack.EMPTY) {
-            if(te.stack == ItemStack.EMPTY) {
-                te.stack = heldItem;
-                if(player.getHeldItem(hand).getCount() > 1) {
-                    player.getHeldItem(hand).shrink(1);
+            if(te.stack.isEmpty()) {
+                te.setInventoryStack(new ItemStack(heldItem.getItem(), 1));
+                if(player.getHeldItem(hand).getMaxStackSize() > 1) {
+                    player.inventory.getCurrentItem().shrink(1);
+                    player.openContainer.detectAndSendChanges();
                 }else {
-                    player.setHeldItem(hand, ItemStack.EMPTY);
+                    player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
+                    player.openContainer.detectAndSendChanges();
                 }
+                return true;
             }
-        }else {
+        }else if(heldItem == ItemStack.EMPTY) {
             if(!te.stack.isEmpty()) {
-                player.setHeldItem(hand, te.stack);
-                te.stack = ItemStack.EMPTY;
+                player.inventory.setInventorySlotContents(player.inventory.currentItem, te.stack);
+                te.setInventoryStack(ItemStack.EMPTY);
+                player.openContainer.detectAndSendChanges();
+                return true;
             }
         }
         return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
@@ -68,6 +73,6 @@ public class DisplayPedestal extends BlockContainer {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return null;
+        return new TileEntityDisplayPedestal();
     }
 }

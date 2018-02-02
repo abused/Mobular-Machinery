@@ -1,5 +1,6 @@
 package teamrapture.mobularmachinery.tileentity;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -30,5 +31,12 @@ public class TileEntityDisplayPedestal extends TileEntityBase {
         return super.writeToNBT(nbt);
     }
 
-
+    public void setInventoryStack(ItemStack stack) {
+        this.stack = stack;
+        markDirty();
+        if (world != null) {
+            IBlockState state = world.getBlockState(getPos());
+            world.notifyBlockUpdate(getPos(), state, state, 3);
+        }
+    }
 }

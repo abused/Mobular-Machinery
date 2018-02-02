@@ -9,19 +9,14 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import teamrapture.mobularmachinery.client.render.RenderMechOctopusBoss;
-import teamrapture.mobularmachinery.client.render.RenderMechanicalChicken;
-import teamrapture.mobularmachinery.client.render.RenderMechanicalGhast;
-import teamrapture.mobularmachinery.client.render.RenderMechanicalZombie;
-import teamrapture.mobularmachinery.client.render.RenderSquiddyAttacker;
-import teamrapture.mobularmachinery.client.render.RenderSquiddyAttackers;
-import teamrapture.mobularmachinery.client.render.RenderSteamStream;
+import teamrapture.mobularmachinery.client.render.*;
 import teamrapture.mobularmachinery.entity.boss.EntityMechOctopusBoss;
 import teamrapture.mobularmachinery.entity.friendly.EntityMechanicalChicken;
 import teamrapture.mobularmachinery.entity.monster.EntityMechanicalGhast;
 import teamrapture.mobularmachinery.entity.monster.EntityMechanicalZombie;
 import teamrapture.mobularmachinery.entity.monster.EntitySquiddyAttacker;
 import teamrapture.mobularmachinery.entity.monster.EntitySquiddyAttackers;
+import teamrapture.mobularmachinery.entity.nonliving.EntityMechEgg;
 import teamrapture.mobularmachinery.entity.nonliving.EntitySteamStream;
 import teamrapture.mobularmachinery.registry.ModResources;
 
@@ -45,7 +40,8 @@ public class ClientProxy extends CommonProxy {
 		rm.entityRenderMap.put(EntitySquiddyAttackers.class, new RenderSquiddyAttackers(rm));
 		rm.entityRenderMap.put(EntityMechanicalGhast.class, new RenderMechanicalGhast(rm));
 		rm.entityRenderMap.put(EntityMechanicalZombie.class, new RenderMechanicalZombie(rm));
-		
+		rm.entityRenderMap.put(EntityMechEgg.class, new RenderMechEgg(rm, ModResources.itemMechanizedEgg));
+
 
 	}
 

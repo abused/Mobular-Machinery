@@ -13,7 +13,7 @@ public class RenderDisplayPededstal extends TileEntitySpecialRenderer<TileEntity
         GlStateManager.pushMatrix();
         {
             if (!te.stack.isEmpty()) {
-                GlStateManager.translate(x + 0.5, y + 0.5, z + 0.5);
+                GlStateManager.translate(x + 0.5, y + 1.08, z + 0.5);
                 GlStateManager.scale(0.7, 0.7, 0.7);
                 long angle = (System.currentTimeMillis() / 10) % 360;
                 GlStateManager.rotate(angle, 0, 1, 0);

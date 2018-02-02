@@ -26,6 +26,7 @@ import teamrapture.mobularmachinery.client.render.RenderRegionalExtruder;
 import teamrapture.mobularmachinery.items.ItemBase;
 import teamrapture.mobularmachinery.items.ItemLinker;
 import teamrapture.mobularmachinery.items.ItemManual;
+import teamrapture.mobularmachinery.items.ItemMechanizedEgg;
 import teamrapture.mobularmachinery.tileentity.*;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderInventory;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderTap;
@@ -35,7 +36,7 @@ import teamrapture.mobularmachinery.utils.FluidBlock;
 public class ModResources {
 
 	public static Item itemGear = new ItemBase("item_gear");
-	public static Item itemMechanizedEgg = new ItemBase("item_mechanized_egg");
+	public static Item itemMechanizedEgg = new ItemMechanizedEgg();
 	public static Item itemBossHeart = new ItemBase("item_boss_heart");
 
 	public static Item itemSteamDummyItem = new ItemBase("steam");
@@ -119,6 +120,7 @@ public class ModResources {
 		GameRegistry.registerTileEntity(TileEntityExtruderTap.class, "tile_extruder_tap");
 		GameRegistry.registerTileEntity(TileEntityExtruderInventory.class, "tile_extruder_inventory");
 		GameRegistry.registerTileEntity(TileEntityEnergyRelay.class, "tile_energy_relay");
+		GameRegistry.registerTileEntity(TileEntityDisplayPedestal.class, "tile_display_pedestal");
 	}
 
 	@SideOnly(Side.CLIENT)

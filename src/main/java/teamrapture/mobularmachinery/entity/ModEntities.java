@@ -80,6 +80,8 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(getEntityResource("steamStream"), EntitySteamStream.class, "steamStream", 4,
 				MobularMachinery.instance, 64, 2, true);
 
+		EntityRegistry.registerModEntity(getEntityResource("MechEgg"), EntitySteamStream.class, "MechEgg", 7,
+				MobularMachinery.instance, 64, 2, true);
 	}
 
 	private static ResourceLocation getEntityResource(String entityName) {
