@@ -8,7 +8,11 @@ item.item_boss_heart.name=Boss Heart
 item.item_mobular_manual.name=Mobular Manual WIP
 item.item_linker.name=Linker Tool
 item.fluid_steam=Steam
+item.steam_checker.name=Steam Checker
+item.creative_steam_checker.name=Creative Steam Checker and Giver
+item.steam_tank.name=Steam Tank
 
+message.mobularmachinery.steam_tank_checker=Capacity: %s Stored: %s
 
 tile.hydroelectric_generator.name=Hydroelectric Generator
 tile.photon_core.name=Photon Core
@@ -22,6 +26,12 @@ tile.energy_relay.name=Energy Relay
 tile.block_gear.name=Gear Block WIP
 tile.display_pedestal.name=Display Pedestal
 
+entity.MechanicalChicken.name=Mechanical Chicken
+entity.MechanicalOctopus.name=Mechanical Octopus
+entity.MechanicalBlaze.name=Mechanical Blaze
+entity.MechanicalGhast.name=Mechanical Ghast
+entity.MechanicalCreeper.name=Mechanical Creeper
+entity.MechanicalOctopus.name=Mechanical Octopus
 entity.MechanicalChicken.name=Mechanical Chicken
 entity.MechanicalOctopus.name=Mechanical Octopus
 

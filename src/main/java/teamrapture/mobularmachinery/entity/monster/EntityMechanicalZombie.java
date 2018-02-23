@@ -87,6 +87,7 @@ public class EntityMechanicalZombie extends EntityMob {
 	public EntityMechanicalZombie(World worldIn) {
 		super(worldIn);
 		this.setSize(0.6F, 1.95F);
+		
 	}
 
 	protected void initEntityAI() {
@@ -234,7 +235,7 @@ public class EntityMechanicalZombie extends EntityMob {
 	}
 
 	protected boolean shouldBurnInDay() {
-		return true;
+		return false;
 	}
 
 	/**

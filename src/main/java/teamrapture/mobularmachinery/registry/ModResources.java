@@ -13,7 +13,13 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import teamrapture.mobularmachinery.blocks.*;
+import teamrapture.mobularmachinery.blocks.DisplayPedestal;
+import teamrapture.mobularmachinery.blocks.EnergyRelay;
+import teamrapture.mobularmachinery.blocks.FluidSteam;
+import teamrapture.mobularmachinery.blocks.GearBlock;
+import teamrapture.mobularmachinery.blocks.HydroGen;
+import teamrapture.mobularmachinery.blocks.MechanicalString;
+import teamrapture.mobularmachinery.blocks.WaterVaporizer;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderFrame;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderInventory;
 import teamrapture.mobularmachinery.blocks.extruder.ExtruderTap;
@@ -27,7 +33,16 @@ import teamrapture.mobularmachinery.items.ItemBase;
 import teamrapture.mobularmachinery.items.ItemLinker;
 import teamrapture.mobularmachinery.items.ItemManual;
 import teamrapture.mobularmachinery.items.ItemMechanizedEgg;
-import teamrapture.mobularmachinery.tileentity.*;
+import teamrapture.mobularmachinery.items.ItemSteamCreative;
+import teamrapture.mobularmachinery.items.ItemSteamGun;
+import teamrapture.mobularmachinery.items.ItemSteamTank;
+import teamrapture.mobularmachinery.items.ItemSteamTankChecker;
+import teamrapture.mobularmachinery.tileentity.TileEntityDisplayPedestal;
+import teamrapture.mobularmachinery.tileentity.TileEntityEnergyRelay;
+import teamrapture.mobularmachinery.tileentity.TileEntityHydroGen;
+import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCell;
+import teamrapture.mobularmachinery.tileentity.TileEntityPhotonCore;
+import teamrapture.mobularmachinery.tileentity.TileEntityWaterVaporizer;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderInventory;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityExtruderTap;
 import teamrapture.mobularmachinery.tileentity.extruder.TileEntityRegionalExtruder;
@@ -38,14 +53,20 @@ public class ModResources {
 	public static Item itemGear = new ItemBase("item_gear");
 	public static Item itemMechanizedEgg = new ItemMechanizedEgg();
 	public static Item itemBossHeart = new ItemBase("item_boss_heart");
-
+	public static Item itemWiring = new ItemBase("item_wiring");
+	public static Item itemCreativeSteamGiver = new ItemSteamCreative("creative_steam_checker");
+	public static Item itemSteamTank = new ItemSteamTank("steam_tank");
+	public static Item itemSteamTankChecker = new ItemSteamTankChecker("steam_checker");
+	
 	public static Item itemSteamDummyItem = new ItemBase("steam");
 	public static Item itemCoil = new ItemBase("item_coil");
 	public static Item itemLinker = new ItemLinker();
 
 	public static Item itemManual = new ItemManual();
+	public static Item itemSteamGun = new ItemSteamGun("steam_guns");
 
 	public static Block blockHydroGen = new HydroGen();
+	public static Block blockMechString = new MechanicalString();
 	public static Block blockPhotonCore = new PhotonCore();
 	public static Block blockPhotonCell = new PhotonCell();
 	public static Block blockWaterVaporizer = new WaterVaporizer();
@@ -63,11 +84,16 @@ public class ModResources {
 	public static void registerResources() {
 		reg(itemMechanizedEgg);
 		reg(itemGear);
+		reg(itemWiring);
+		reg(itemSteamGun);
 		reg(itemSteamDummyItem);
 		reg(itemBossHeart);
 		reg(itemManual);
 		reg(itemLinker);
 		reg(itemCoil);
+		reg(itemCreativeSteamGiver);
+		reg(itemSteamTank);
+		reg(itemSteamTankChecker);
 		reg(blockHydroGen);
 		reg(blockPhotonCore);
 		reg(blockPhotonCell);
@@ -79,6 +105,7 @@ public class ModResources {
 		reg(blockEnergyRelay);
 		reg(blockGear);
 		reg(blockDisplayPedestal);
+		reg(blockMechString);
 
 		FluidRegistry.registerFluid(steam);
 		FluidRegistry.addBucketForFluid(steam);
@@ -88,12 +115,18 @@ public class ModResources {
 	}
 
 	public static void registerRenders() {
+		regRender(itemCreativeSteamGiver);
+		regRender(itemSteamTank);
+		regRender(itemSteamTankChecker);
+		
+		regRender(itemWiring);
 		regRender(itemGear);
+		regRender(itemSteamGun);
 		regRender(itemLinker);
 		regRender(itemSteamDummyItem);
 		regRender(itemMechanizedEgg);
 		regRender(itemBossHeart);
-
+		regRender(blockMechString);
 		regRender(itemCoil);
 		regRender(itemManual);
 		regRender(blockPhotonCore);

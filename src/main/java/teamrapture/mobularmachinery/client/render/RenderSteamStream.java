@@ -21,6 +21,7 @@ public class RenderSteamStream extends Render<EntitySteamStream> {
 	public RenderSteamStream(RenderManager renderManager, Item itemIn) {
 		super(renderManager);
 		this.item = itemIn;
+		 
 		this.itemRenderer = Minecraft.getMinecraft().getRenderItem();
 	}
 

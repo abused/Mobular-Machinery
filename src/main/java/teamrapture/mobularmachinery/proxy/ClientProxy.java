@@ -9,15 +9,30 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import teamrapture.mobularmachinery.client.render.*;
+import teamrapture.mobularmachinery.client.render.RenderMechEgg;
+import teamrapture.mobularmachinery.client.render.RenderMechOctopusBoss;
+import teamrapture.mobularmachinery.client.render.RenderMechSpiderBoss;
+import teamrapture.mobularmachinery.client.render.RenderMechanicalBlaze;
+import teamrapture.mobularmachinery.client.render.RenderMechanicalChicken;
+import teamrapture.mobularmachinery.client.render.RenderMechanicalCreeper;
+import teamrapture.mobularmachinery.client.render.RenderMechanicalGhast;
+import teamrapture.mobularmachinery.client.render.RenderMechanicalZombie;
+import teamrapture.mobularmachinery.client.render.RenderSquiddyAttacker;
+import teamrapture.mobularmachinery.client.render.RenderSquiddyAttackers;
+import teamrapture.mobularmachinery.client.render.RenderSteamStream;
+import teamrapture.mobularmachinery.client.render.RenderStringShot;
 import teamrapture.mobularmachinery.entity.boss.EntityMechOctopusBoss;
+import teamrapture.mobularmachinery.entity.boss.EntityMechSpiderBoss;
 import teamrapture.mobularmachinery.entity.friendly.EntityMechanicalChicken;
+import teamrapture.mobularmachinery.entity.monster.EntityMechanicalBlaze;
+import teamrapture.mobularmachinery.entity.monster.EntityMechanicalCreeper;
 import teamrapture.mobularmachinery.entity.monster.EntityMechanicalGhast;
 import teamrapture.mobularmachinery.entity.monster.EntityMechanicalZombie;
 import teamrapture.mobularmachinery.entity.monster.EntitySquiddyAttacker;
 import teamrapture.mobularmachinery.entity.monster.EntitySquiddyAttackers;
 import teamrapture.mobularmachinery.entity.nonliving.EntityMechEgg;
 import teamrapture.mobularmachinery.entity.nonliving.EntitySteamStream;
+import teamrapture.mobularmachinery.entity.nonliving.EntityStringShot;
 import teamrapture.mobularmachinery.registry.ModResources;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
@@ -41,7 +56,10 @@ public class ClientProxy extends CommonProxy {
 		rm.entityRenderMap.put(EntityMechanicalGhast.class, new RenderMechanicalGhast(rm));
 		rm.entityRenderMap.put(EntityMechanicalZombie.class, new RenderMechanicalZombie(rm));
 		rm.entityRenderMap.put(EntityMechEgg.class, new RenderMechEgg(rm, ModResources.itemMechanizedEgg));
-
+		rm.entityRenderMap.put(EntityMechSpiderBoss.class, new RenderMechSpiderBoss(rm));
+		rm.entityRenderMap.put(EntityStringShot.class, new RenderStringShot(rm, ModResources.itemMechanizedEgg));
+		rm.entityRenderMap.put(EntityMechanicalCreeper.class, new RenderMechanicalCreeper(rm));
+		rm.entityRenderMap.put(EntityMechanicalBlaze.class, new RenderMechanicalBlaze(rm));
 
 	}
 

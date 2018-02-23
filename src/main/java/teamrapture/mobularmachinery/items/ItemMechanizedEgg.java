@@ -1,7 +1,6 @@
 package teamrapture.mobularmachinery.items;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,6 +11,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import teamrapture.mobularmachinery.MobularMachinery;
+import teamrapture.mobularmachinery.entity.nonliving.EntityStringShot;
 
 public class ItemMechanizedEgg extends Item {
 
@@ -39,8 +39,8 @@ public class ItemMechanizedEgg extends Item {
 
         if (!worldIn.isRemote)
         {
-            EntityEgg entityegg = new EntityEgg(worldIn, playerIn);
-            entityegg.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            EntityStringShot entityegg = new EntityStringShot(worldIn, playerIn, playerIn.posX, playerIn.posY, playerIn.posZ);
+          //  entityegg.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
             worldIn.spawnEntity(entityegg);
         }
 
